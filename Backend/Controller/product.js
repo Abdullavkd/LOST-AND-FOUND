@@ -41,9 +41,6 @@ export const postProduct = async (req, res) => {
 export const allPosts = async (req, res) => {
     try {
         const allPosts = await productModel.find();
-        if(allPosts.length < 1) {
-            return res.status(404).json("there is no products");
-        }
 
         res.status(200).json(allPosts);
     } catch (error) {
