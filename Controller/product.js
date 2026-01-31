@@ -106,12 +106,23 @@ export const updateProduct = async (req, res) => {
 
 
 
-
+/**
+ * Function to delete items
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
 export const deleteProduct = async (req, res) => {
     try {
         const {id} = req.params;
-        const deletedProduct = await productModel.findByIdAndDelete
+        const deletedProduct = await productModel.findByIdAndDelete(id);
+
+        if(!deletedProduct) {
+            return res.status(404).json("There is no product with provided id");
+        }
+
+        res.status(200).json({message: "Deleted Successfully", deletedProduct});
     } catch (error) {
-        
+        res.status(error.status || 500).json(error.message || "Something Went Wrong");
     }
 }
