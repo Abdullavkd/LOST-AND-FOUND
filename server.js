@@ -1,13 +1,15 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import appRouter from './router.js';
+import authRouter from './Router/auth.js';
+import productRouter from './Router/product.js';
 
 const app = express();
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
 app.use(express.json())
 
-app.use("/", appRouter)
+app.use("/", authRouter)
+app.use('/api/items', productRouter)
 
 async function start() {
     try {
