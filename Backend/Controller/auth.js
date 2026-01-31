@@ -115,6 +115,15 @@ export const userUpdate = async (req, res) => {
         if(!name && !email && !password) {
             return res.status(404).json("no datas on body")
         }
+        // check acces to do it
+        const userId = req.user.id;
+        if(!userId) {
+            return res.status(404).json("There is no userId");
+        }
+        const user = await userModel.findById(id);
+        if(id.toString() !== userId) {
+            return res.status(404).json("You have no access to update it");
+        }
 
         // hash updated password
         let hashedPass;
@@ -141,6 +150,11 @@ export const userDelete = async (req, res) => {
     try {
         // take data from body and params
         const {id} = req.params;
+        // check access to do it
+        const userId = req.user.id;
+        if(id.toString() !== userId) {
+            return res.status(404).json("You have no access to delete it");
+        }
 
         const deletedUser = await userModel.findByIdAndDelete(id);
 
