@@ -1,5 +1,6 @@
 import { response } from "express";
 import productModel from "../Model/productSchema.js";
+import mongoose from "mongoose";
 
 /**
  * Function to post a lost/found item
@@ -136,6 +137,7 @@ export const deleteProduct = async (req, res) => {
 
         // check access of user
         const userId = req.user.id;
+    
         if(!userId) {
             return res.status(404).json("There is no userId Provided");
         }
@@ -150,6 +152,27 @@ export const deleteProduct = async (req, res) => {
         }
 
         res.status(200).json({message: "Deleted Successfully", deletedProduct});
+    } catch (error) {
+        res.status(error.status || 500).json(error.message || "Something Went Wrong");
+    }
+}
+
+
+
+
+
+export const myPosts = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        if(!userId) {
+            return res.status(404).json("You are not Authorized");
+        }
+        const products = await productModel.find({owner: userId});
+        if(!products) {
+            return res.status(404).json("There is no product for you");
+        }
+
+        res.status(200).json(products)
     } catch (error) {
         res.status(error.status || 500).json(error.message || "Something Went Wrong");
     }

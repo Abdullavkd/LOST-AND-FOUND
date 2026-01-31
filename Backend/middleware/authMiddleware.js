@@ -7,9 +7,9 @@ export const verifyToken = async (req, res, next) => {
         if(!token) {
             return res.status(401).json("Not Authorized, no token");
         }
-        console.log(token)
+        
         const decoded = jwt.verify(token, process.env.SECRET_KEY);
-        console.log("hello")
+        
         req.user = decoded;
         next()
     } catch (error) {
