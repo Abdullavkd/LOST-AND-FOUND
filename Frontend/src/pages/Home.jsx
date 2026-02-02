@@ -2,6 +2,7 @@
 import DataContext from '../Context/DataContext';
 import ItemCard from '../Components/ItemCard';
 import { memo, useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     const {product} = useContext(DataContext);

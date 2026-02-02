@@ -6,6 +6,7 @@ import ItemCard from './Components/ItemCard'
 import Home from './pages/Home'
 import DataProvider from './Provider/DataProvider'
 import PostItem from './pages/PostItem'
+import PostDetails from './pages/PostDetails'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path='/' element ={<Home/>}/>
           <Route path='/postitem' element={<PostItem/>}/>
+          <Route path='/postdetails' element={<PostDetails/>}/>
         </Routes>
       </div>
     </DataProvider>
