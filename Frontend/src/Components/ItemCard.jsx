@@ -44,7 +44,7 @@ const ItemCard = ({item, image, location, state, country, date, type, id, permis
   return (
     <div className=' rounded-3xl p-3 relative bg-white'>
         {permission ? <div className='flex gap-3'><button onClick={deleteItem} className='bg-red-500 p-2 rounded-full absolute text-white left-4 top-4 opacity-65'><Trash2 className='w-5 h-5'/></button><Link to={`/editpost/${id}`} className='bg-gray-400 p-2 rounded-full absolute text-white left-14 top-4 opacity-65'><Pencil className='w-5 h-5'/></Link></div>  :<div></div> }
-      <div className='absolute bg-green-600 text-white top-5 right-5 px-3 text-sm rounded'>{type}</div>
+      <div className={`absolute text-white top-5 right-5 px-3 text-sm rounded ${type == "Lost" ? 'bg-red-600' : 'bg-green-600'}`}>{type}</div>
       <div className='h-43 rounded-2xl w-full overflow-hidden bg-gray-100'>
         <img src={`${image}`} alt="" className='h-45'/>
       </div>
@@ -54,7 +54,7 @@ const ItemCard = ({item, image, location, state, country, date, type, id, permis
             <p>{location}, {state}, {country}</p>
             <div className='flex justify-between w-full items-center'>
                 <p>{timeAgo}</p>
-                <Link to={`/postdetails/${id}`} className='bg-green-600 px-5 py-1 rounded-full text-white'>View Details</Link>
+                <Link to={`/postdetails/${id}`} className={` px-5 py-1 rounded-full text-white ${type == "Lost" ? 'bg-red-600' : 'bg-green-600'}`}>View Details</Link>
             </div>
         </div>
       </div>
