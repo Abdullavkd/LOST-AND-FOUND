@@ -3,6 +3,8 @@ import { memo } from 'react';
 import api from '../Services/api';
 import { useEffect } from 'react';
 import ItemCard from '../Components/ItemCard';
+import { ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const MyPosts = () => {
     const [myPost, setMyPost] = useState([]);
@@ -23,10 +25,21 @@ const MyPosts = () => {
     
     
   return (
-    <div className='grid grid-cols-4 gap-3'>
-      {myPost.map(val => (
-        <ItemCard key={val._id} item={val.item} image={val.image} country={val.country} location={val.location} date={val.date} state={val.state} type={val.type} id={val._id} permission={true} isDeleted={() => setRefresh(prev => !prev)}/>
-      ))}
+    <div>
+        <div>
+            <div className='flex justify-between'>
+                <Link to={-1} className='inline-block'><ArrowLeft className='bg-white rounded-full p-3 w-11 h-11 ml-3 mt-3'/></Link>
+                <div className='mr-3 mt-3'><button onClick={() => {localStorage.removeItem('user'); window.location.href='/login'}} className='cursor-pointer bg-orange-600 text-white rounded-full px-5 py-2'>Logout</button></div>
+            </div>
+            <div className='flex mb-15'>
+                <h1 className='text-5xl font-bold m-auto'>My Posts</h1>
+            </div>
+        </div>
+        <div className='grid grid-cols-4 gap-3'>
+            {myPost.map(val => (
+                <ItemCard key={val._id} item={val.item} image={val.image} country={val.country} location={val.location} date={val.date} state={val.state} type={val.type} id={val._id} permission={true} isDeleted={() => setRefresh(prev => !prev)}/>
+            ))}
+        </div>
     </div>
   );
 };

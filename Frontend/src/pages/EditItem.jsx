@@ -32,7 +32,7 @@ const EditItem = () => {
         }
         getItems();
         
-    },[])
+    },[id])
 
     useEffect(() => {
         const permission = localStorage.getItem('user')
