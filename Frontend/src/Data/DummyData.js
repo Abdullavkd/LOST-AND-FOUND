@@ -93,3 +93,19 @@ export const products = [
         type: "Lost"
     }
 ];
+
+
+
+
+
+
+
+
+export const registrations = [
+    {
+        id: 101,
+        name: "abdulla",
+        email: "abdulla@gmail.com",
+        password: "password"
+    }
+]

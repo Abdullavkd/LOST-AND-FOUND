@@ -1,9 +1,16 @@
 import { Camera } from 'lucide-react';
+import { useContext } from 'react';
 import { memo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import DataContext from '../Context/DataContext';
 
 const PostDetails = () => {
+    const { id } = useParams();
+    const { product } = useContext(DataContext);
+    const details = product.find(val => val.id == id);
     
+    if(!details) return <h1>Staff Not Found</h1>
+    console.log(details)
   return (
     <div className='flex flex-col gap-9 bg-white p-17 min-h-screen'>
       <div className='flex flex-col items-center'>
@@ -13,9 +20,9 @@ const PostDetails = () => {
       <div className='flex justify-center h-100 gap-11'>
         <div className=' h-100'>
             <div className='w-full h-full flex justify-center items-center'>
-                <div className='h-60 w-60 border flex justify-center items-center overflow-hidden rounded-2xl'>
+                <div className='min-h-35 w-91 border flex justify-center items-center overflow-hidden rounded-2xl'>
                         <Camera className='w-25 h-25 m-auto mb-3 absolute'/>
-                    <img src="" alt="" className='z-1 h-full'/>
+                    <img src={`${details.image}`} alt="" className='z-1'/>
                 </div>
             </div>
         </div>
@@ -23,31 +30,31 @@ const PostDetails = () => {
             <div className='w-full text-2xl flex flex-col gap-3 bg-gray-100 p-5 rounded-2xl'>
                 <div className='flex justify-between w-full'>
                     <p>Title:</p>
-                    <p className='text-3xl font-bold'>I phone 13 Pro</p>
+                    <p className='text-3xl font-bold'>{details.item}</p>
                 </div>
                 <div className='flex justify-between w-full'>
                     <p>place:</p>
-                    <p className='text-2xl font-bold'>Palazhi</p>
+                    <p className='text-2xl font-bold'>{details.location}</p>
                 </div>
                 <div className='flex justify-between w-full'>
                     <p>state:</p>
-                    <p className='text-2xl font-bold'>Kerala</p>
+                    <p className='text-2xl font-bold'>{details.state}</p>
                 </div>
                 <div className='flex justify-between w-full'>
                     <p>country:</p>
-                    <p className='text-2xl font-bold'>India</p>
+                    <p className='text-2xl font-bold'>{details.country}</p>
                 </div>
                 <div className='flex justify-between w-full'>
                     <p>date:</p>
-                    <p className='text-2xl font-bold'>1 Day Ago</p>
+                    <p className='text-2xl font-bold'>{details.date}</p>
                 </div>
                 <div className='flex justify-between w-full'>
                     <p>type:</p>
-                    <p className='text-2xl font-bold'>Loss</p>
+                    <p className='text-2xl font-bold'>{details.type}</p>
                 </div>
                 <div className='flex justify-between w-full'>
                     <p>status:</p>
-                    <p className='text-2xl font-bold'>Active</p>
+                    <p className='text-2xl font-bold'>{details.status}</p>
                 </div>
             </div>
         </div>

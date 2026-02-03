@@ -12,7 +12,7 @@ const Home = () => {
         {/* All items here */}
       <div className='flex flex-wrap justify-between gap-3'>
         {product.map(val => (
-            <ItemCard key={val.id} item={val.item} image={val.image} country={val.country} location={val.location} date={val.date} state={val.state} type={val.type}/>
+            <ItemCard key={val.id} item={val.item} image={val.image} country={val.country} location={val.location} date={val.date} state={val.state} type={val.type} id={val.id}/>
         ))}
       </div>
     </div>
