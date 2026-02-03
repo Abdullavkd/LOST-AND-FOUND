@@ -1,37 +1,39 @@
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
-    title: {
+    item: {
         type: String,
         required: true,
     },
-    description: {
-        type: String,
-        required: true
-    },
-    category: {
-        type: String
-    },
     image: {
         type: String,
+        default: ''
     },
     location: {
         type: String,
         required: true
     },
+    state: {
+        type: String,
+        required: true
+    },
+    country: {
+        type: String,
+        required: true
+    },
     type: {
         type: String,
-        enum: ['lost', 'found'],
+        enum: ['Lost', 'Found'],
         required: true
     },
     status: {
         type: String,
-        enum: ['active', 'resolved'],
-        default: "active"
+        enum: ['Active', 'Resolved'],
+        default: "Active"
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
+    date: {
+        type: Number,
+        default: Date.now()
     },
     owner: {
         type: mongoose.Schema.Types.ObjectId,

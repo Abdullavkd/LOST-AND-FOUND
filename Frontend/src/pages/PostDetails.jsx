@@ -1,13 +1,31 @@
 import { Camera } from 'lucide-react';
-import { useContext } from 'react';
+// import { useContext } from 'react';
 import { memo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import DataContext from '../Context/DataContext';
+import { useEffect } from 'react';
+import api from '../Services/api';
+import { useState } from 'react';
 
 const PostDetails = () => {
     const { id } = useParams();
-    const { product } = useContext(DataContext);
-    const details = product.find(val => val.id == id);
+    
+    const [products, setProducts] = useState([]);
+    
+    useEffect(() => {
+        const getItems = async () => {
+            try {
+                const res = await api.get('/api/items');
+                setProducts(res.data);
+                console.log(res)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getItems();
+    },[])
+
+    const details = products.find(val => val._id == id);
     
     if(!details) return <h1>Staff Not Found</h1>
     console.log(details)

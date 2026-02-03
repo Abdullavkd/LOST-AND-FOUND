@@ -1,9 +1,9 @@
 import { ImageIcon, User } from 'lucide-react';
-import { useContext } from 'react';
 import { useState } from 'react';
 import { memo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import DataContext from '../Context/DataContext';
+import api from '../Services/api';
 
 const PostItem = () => {
     const [item, setItem] = useState('');
@@ -11,32 +11,20 @@ const PostItem = () => {
     const [state, setState] = useState()
     const [country, setCountry] = useState();
     const [type, setType] = useState();
+    const Navigate = useNavigate();
 
-    const {product, setProduct} = useContext(DataContext);
-
-    // function to add new item
-    const addNewItem = (newItem) => {
-        setProduct([...product, newItem])
-    }
-    console.log(product)
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if(!item, !location, !state, !country, !type) return;
+        if(!item, !location, !state, !country, !type) return alert("All Fields are Required!")
 
-        const newItem = {
-            id: Date.now(),
-            item,
-            location,
-            state,
-            country,
-            type,
-            image: "",
-            date: Date.now(),
-            statue: "Active"
+
+        try {
+            const response = await api.post('/api/items',{item, location, state, country, type});
+            alert(response.data.message);
+            Navigate('/')
+        } catch (error) {
+            alert(error.data.message || "Product Adding Failed")
         }
-
-        addNewItem(newItem)
 
         setItem("");
         setLocation('');

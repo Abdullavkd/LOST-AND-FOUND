@@ -1,34 +1,29 @@
 import { ArrowLeft } from 'lucide-react';
-import { useContext } from 'react';
 import { useState } from 'react';
 import { memo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import DataContext from '../Context/DataContext';
+import api from '../Services/api';
 
 const Register = () => {
     const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const Navigate = useNavigate();
 
-    const {registration, setRegistration} = useContext(DataContext);
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if(!name || !email || !password) return;
+        if(!name || !email || !password) return alert("All Fields are Required")
 
-        const newUser = {
-            id: Date.now(),
-            name,
-            email,
-            password
+        try {
+            const response = await api.post('/register',{
+                name, email, password
+            })
+            alert(response.data.message);
+            Navigate('/login')
+        } catch (error) {
+            alert(error.data.message || "Registaration Failed")
         }
-
-        // function to add new user
-        const addNewUser = (newUser) => {
-            setRegistration([...registration, newUser])
-            console.log(registration)
-        }
-        addNewUser(newUser)
 
         setName('');
         setEmail('')

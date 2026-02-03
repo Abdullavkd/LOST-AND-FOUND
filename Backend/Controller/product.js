@@ -15,19 +15,19 @@ export const postProduct = async (req, res) => {
             return res.status(404).json("There is no userId");
         }
 
-        const {title, description, category, image, location, type} = req.body;
-        if(!title || !description || !location || !type) {
-            return res.status(404).json("title, description, location and type are required");
+        const {item, location, state, image, country, type} = req.body;
+        if(!item || !location || !state || !country || !type) {
+            return res.status(404).json("item, location, state, country and type are required");
         }
 
         // check is it lost or found
-        if(type != 'lost' && type != "found") {
+        if(type != 'Lost' && type != "Found") {
             return res.status(404).json("type should be either lost or found")
         }
 
         // save to database
         const savedItem = await productModel.create({
-            title, description, category, image, location, type, owner: userId
+            item, location, state, image, country, type, owner: userId
         })
         
         res.status(201).json({message: "Product Added Successfully", details: savedItem})

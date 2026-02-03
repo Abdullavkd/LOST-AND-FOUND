@@ -1,5 +1,4 @@
 import { ArrowLeft } from 'lucide-react';
-import { useContext } from 'react';
 import { useState } from 'react';
 import { memo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -10,7 +9,7 @@ const Login = () => {
     const [email ,setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const navigate = useNavigate;
+    const Navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,7 +20,7 @@ const Login = () => {
             // set fetched data to localstorage
             localStorage.setItem('user', JSON.stringify(response.data.user));
             alert("Login Successful!");
-            navigate('/')
+            Navigate('/')
         } catch (error) {
             alert(error.response?.data || "Login Failed")
         }
