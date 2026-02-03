@@ -91,7 +91,7 @@ export const productDetails = async (req, res) => {
 export const updateProduct = async (req, res) => {
     try {
         const {id} = req.params;
-        const {status} = req.body;
+        const {item, location, state, country, type, image } = req.body;
 
         // find the product
         const product = await productModel.findById(id);
@@ -106,10 +106,10 @@ export const updateProduct = async (req, res) => {
         }
         
         // check is status active or resolved
-        if(status != 'active' && status != 'resolved') {
-            return res.status(404).json("status should be either active or resolved")
-        }
-        const updatedProduct = await productModel.findByIdAndUpdate(id, {status}, 
+        // if(status != 'active' && status != 'resolved') {
+        //     return res.status(404).json("status should be either active or resolved")
+        // }
+        const updatedProduct = await productModel.findByIdAndUpdate(id, {item, location, state, country, image, type}, 
             {new: true, runValidators: true});
 
         if(!updatedProduct) {

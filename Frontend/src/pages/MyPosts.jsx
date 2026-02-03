@@ -6,6 +6,7 @@ import ItemCard from '../Components/ItemCard';
 
 const MyPosts = () => {
     const [myPost, setMyPost] = useState([]);
+    const [refresh, setRefresh] = useState(false);
     
     useEffect(() => {
         const myPosts = async () => {
@@ -18,12 +19,13 @@ const MyPosts = () => {
             }
         }
         myPosts()
-    },[]);
+    },[refresh]);
+    
     
   return (
     <div className='grid grid-cols-4 gap-3'>
       {myPost.map(val => (
-        <ItemCard key={val._id} item={val.item} image={val.image} country={val.country} location={val.location} date={val.date} state={val.state} type={val.type} id={val._id}/>
+        <ItemCard key={val._id} item={val.item} image={val.image} country={val.country} location={val.location} date={val.date} state={val.state} type={val.type} id={val._id} permission={true} isDeleted={() => setRefresh(prev => !prev)}/>
       ))}
     </div>
   );

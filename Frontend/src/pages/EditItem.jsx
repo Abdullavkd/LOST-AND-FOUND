@@ -1,13 +1,15 @@
 import { ImageIcon, User } from 'lucide-react';
 import { useState } from 'react';
 import { memo } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import DataContext from '../Context/DataContext';
 import api from '../Services/api';
 import { useEffect } from 'react';
 
-const PostItem = () => {
-    const [item, setItem] = useState('');
+const EditItem = () => {
+    const {id} = useParams();
+
+    const [item, setItem] = useState();
     const [location, setLocation] = useState();
     const [state, setState] = useState()
     const [country, setCountry] = useState();
@@ -15,9 +17,27 @@ const PostItem = () => {
     const Navigate = useNavigate();
 
     useEffect(() => {
+        const getItems = async () => {
+            try {
+                const res = await api.get(`/api/items/${id}`);
+                const data = res.data;
+                setItem(data.item)
+                setLocation(data.location);
+                setState(data.state);
+                setCountry(data.country);
+                setType(data.type);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        getItems();
+        
+    },[])
+
+    useEffect(() => {
         const permission = localStorage.getItem('user')
-        if(!permission) Navigate('/login')
-    },[Navigate])
+        if(!permission) Navigate(`/login`)
+    },[Navigate, id])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,11 +46,11 @@ const PostItem = () => {
 
 
         try {
-            const response = await api.post('/api/items',{item, location, state, country, type});
+            const response = await api.patch(`/api/items/${id}`,{item, location, state, country, type});
             alert(response.data.message);
-            Navigate('/')
+            Navigate(`/postdetails/${id}`)
         } catch (error) {
-            alert(error.data.message || "Product Adding Failed")
+            alert(error.data.message || "Product Updating Failed")
         }
 
         setItem('');
@@ -82,4 +102,4 @@ const PostItem = () => {
   );
 };
 
-export default memo(PostItem);
+export default memo(EditItem);

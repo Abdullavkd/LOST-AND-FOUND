@@ -21,6 +21,7 @@ const Login = () => {
             localStorage.setItem('user', JSON.stringify(response.data.user));
             alert("Login Successful!");
             Navigate('/')
+            window.location.reload();
         } catch (error) {
             alert(error.response?.data || "Login Failed")
         }

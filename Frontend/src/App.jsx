@@ -10,6 +10,7 @@ import PostDetails from './pages/PostDetails'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import MyPosts from './pages/MyPosts'
+import EditItem from './pages/EditItem'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/myposts' element={<MyPosts/>}/>
+          <Route path='/editpost/:id' element={<EditItem/>}/>
         </Routes>
       </div>
     </DataProvider>

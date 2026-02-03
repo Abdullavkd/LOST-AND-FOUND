@@ -17,7 +17,7 @@ const PostDetails = () => {
             try {
                 const res = await api.get('/api/items');
                 setProducts(res.data);
-                console.log(res)
+                // console.log(res)
             } catch (error) {
                 console.log(error)
             }
