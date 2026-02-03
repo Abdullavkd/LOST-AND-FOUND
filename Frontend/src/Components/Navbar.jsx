@@ -24,7 +24,7 @@ const Navbar = () => {
       </div>
       <div className='flex justify-end gap-9'>
         <Link to={'/postitem'} className='bg-orange-600 rounded-full px-5 p-1 text-white flex items-center'>Report Item</Link>
-        <Link to={'/login'} className='bg-gray-200 rounded-full p-2'><User/></Link>
+        <Link to={`${localStorage.getItem('user') ? '/myposts' : '/login'}`} className='bg-gray-200 rounded-full p-2'><User/></Link>
       </div>
     </div>
   );

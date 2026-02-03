@@ -4,6 +4,7 @@ import { memo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import DataContext from '../Context/DataContext';
 import api from '../Services/api';
+import { useEffect } from 'react';
 
 const PostItem = () => {
     const [item, setItem] = useState('');
@@ -13,8 +14,14 @@ const PostItem = () => {
     const [type, setType] = useState();
     const Navigate = useNavigate();
 
+    useEffect(() => {
+        const permission = localStorage.getItem('user')
+        if(!permission) Navigate('/login')
+    },[Navigate])
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         if(!item, !location, !state, !country, !type) return alert("All Fields are Required!")
 
 
