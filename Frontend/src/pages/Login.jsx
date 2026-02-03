@@ -2,30 +2,29 @@ import { ArrowLeft } from 'lucide-react';
 import { useContext } from 'react';
 import { useState } from 'react';
 import { memo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import DataContext from '../Context/DataContext';
+import api from '../Services/api';
 
 const Login = () => {
     const [email ,setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const {registration} = useContext(DataContext);
+    const navigate = useNavigate;
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        /**
-         * function to compare credencials
-         * @returns 
-         */
-        const compareCredential = () => {
-            const user = registration.find(val => val.email === email);
-            if(!user) return alert("No user Found")
-            if(user.password !== password) return alert("Incurrect Password")
-            return alert("Login Success")
-        
+        try {
+            // fetch data from backend
+            const response = await api.post('/login', {email, password});
+            // set fetched data to localstorage
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+            alert("Login Successful!");
+            navigate('/')
+        } catch (error) {
+            alert(error.response?.data || "Login Failed")
         }
-        compareCredential();
 
         setEmail('')
         setPassword('')
