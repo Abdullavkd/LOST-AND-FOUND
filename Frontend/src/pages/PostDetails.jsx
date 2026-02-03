@@ -3,6 +3,7 @@ import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 const PostDetails = () => {
+    
   return (
     <div className='flex flex-col gap-9 bg-white p-17 min-h-screen'>
       <div className='flex flex-col items-center'>

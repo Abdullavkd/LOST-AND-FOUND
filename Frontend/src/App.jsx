@@ -7,6 +7,8 @@ import Home from './pages/Home'
 import DataProvider from './Provider/DataProvider'
 import PostItem from './pages/PostItem'
 import PostDetails from './pages/PostDetails'
+import Login from './pages/Login'
+import Register from './pages/Register'
 
 function App() {
 
@@ -19,6 +21,8 @@ function App() {
           <Route path='/' element ={<Home/>}/>
           <Route path='/postitem' element={<PostItem/>}/>
           <Route path='/postdetails' element={<PostDetails/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/register' element={<Register/>}/>
         </Routes>
       </div>
     </DataProvider>

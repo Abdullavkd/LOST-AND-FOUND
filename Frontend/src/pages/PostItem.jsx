@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const PostItem = () => {
   return (
-    <div className='flex flex-col gap-17 bg-white p-17'>
+    <div className='flex flex-col gap-17 bg-white p-17 min-h-screen'>
       <div className='flex flex-col items-center'>
         <p className='text-4xl font-bold'>Report An item</p>
         <p className='text-2xl'>Enter Item Details</p>
