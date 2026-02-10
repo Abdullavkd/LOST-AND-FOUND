@@ -14,7 +14,7 @@ const EditItem = () => {
     const [state, setState] = useState()
     const [country, setCountry] = useState();
     const [type, setType] = useState();
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getItems = async () => {
@@ -36,8 +36,8 @@ const EditItem = () => {
 
     useEffect(() => {
         const permission = localStorage.getItem('user')
-        if(!permission) Navigate(`/login`)
-    },[Navigate, id])
+        if(!permission) navigate(`/login`)
+    },[navigate, id])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -48,7 +48,7 @@ const EditItem = () => {
         try {
             const response = await api.patch(`/api/items/${id}`,{item, location, state, country, type});
             alert(response.data.message);
-            Navigate(`/postdetails/${id}`)
+            navigate(`/postdetails/${id}`)
         } catch (error) {
             alert(error.data.message || "Product Updating Failed")
         }

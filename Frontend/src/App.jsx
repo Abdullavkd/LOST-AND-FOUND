@@ -26,6 +26,7 @@ function App() {
           <Route path='/postitem' element={<ProtectedRoutes><PostItem/></ProtectedRoutes>}/>
           <Route path='/postdetails/:id' element={<PostDetails/>}/>
           <Route path='/login' element={<PublicRoutes><Login/></PublicRoutes>}/>
+          <Route path='/logout/:id' element={<PublicRoutes><Login/></PublicRoutes>}/>
           <Route path='/register' element={<PublicRoutes><Register/></PublicRoutes>}/>
           <Route path='/myposts' element={<ProtectedRoutes><MyPosts/></ProtectedRoutes>}/>
           <Route path='/editpost/:id' element={<ProtectedRoutes><EditItem/></ProtectedRoutes>}/>

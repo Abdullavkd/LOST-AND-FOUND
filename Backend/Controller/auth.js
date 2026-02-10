@@ -1,6 +1,7 @@
 import userModel from "../Model/UserSchema.js";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
+import mongoose from "mongoose";
 
 /**
  * Function for userRegistration
@@ -72,13 +73,11 @@ export const userLogin = async (req, res) => {
         if(!user) {
             return res.status(404).json("User is not exist")
         }
-        console.log("log")
         // check password
         const isMatchPass = await bcrypt.compare(password, user.password);
         if(!isMatchPass) {
             return res.status(404).json("Wrong Password");
         }
-        console.log("log")
 
         // create JWT
         const token = jwt.sign(
@@ -165,5 +164,43 @@ export const userDelete = async (req, res) => {
         res.status(200).json({message: "Deleted Successfully", deletedUser})
     } catch (error) {
         res.status(error.status || 500).json(error.message || "Something Went Wrong")
+    }
+}
+
+
+
+
+
+
+
+/**
+ * Function to logout
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
+export const userLogout = async (req, res) => {
+    try {
+        const {id} = req.params;
+
+        const user = await userModel.findById(id);
+        if(!user) {
+            return res.status(403).json("You cannot Logout, Because you have no account here");
+        }
+        res.status(200).json("You Logged out Successfully")
+    } catch (error) {
+        res.status(error.status || 500).json(error.message || "Server Error");
+    }
+}
+
+
+
+
+export const user = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        res.status(200).json(userId)
+    } catch (error) {
+        res.status(error.status || 500).json(error.message || "Server Erro")
     }
 }
