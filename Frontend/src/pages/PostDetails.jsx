@@ -66,7 +66,7 @@ const PostDetails = () => {
                     </div>
                     <div className='flex justify-between w-full'>
                         <p>date:</p>
-                        <p className='text-2xl font-bold'>{details.date}</p>
+                        <p className='text-2xl font-bold'>{new Date(details.date).toLocaleDateString('en-GB',{'day':'numeric','month': 'short', 'year':'numeric'})}</p>
                     </div>
                     <div className='flex justify-between w-full'>
                         <p>type:</p>

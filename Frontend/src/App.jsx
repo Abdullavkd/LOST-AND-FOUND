@@ -19,8 +19,8 @@ function App() {
   return (
     <BrowserRouter>
     <DataProvider>
+      <div className='mb-3 bg-white'><Navbar /></div>
       <div className='max-w-301 m-auto flex flex-col gap-3'>
-        <Navbar />
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/postitem' element={<ProtectedRoutes><PostItem/></ProtectedRoutes>}/>

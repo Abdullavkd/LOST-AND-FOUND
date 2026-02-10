@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const Navbar = () => {
     const ButtonOne = useNavigate;
   return (
-    <div className='bg-white grid grid-cols-3 py-3 px-9 gap-15 items-center'>
+    <div className='bg-white grid grid-cols-3 py-3 px-9 gap-15 items-center max-w-301 m-auto'>
         <div className='flex gap-7'>
             {/* <Link className='font-black text-2xl'>L&F</Link> */}
             <Link to={'/'} className='font-black text-2xl'>Lost & Found</Link>
