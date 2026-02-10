@@ -8,6 +8,7 @@ import api from '../Services/api';
 const ItemCard = ({item, image, location, state, country, date, type, id, permission, isDeleted}) => {
     const [now] = useState(() => Date.now())
     const navigate = useNavigate();
+    console.log(image)
 
     const timeAgo = useMemo(() => {
         const msPerMinute = 60 * 1000;
@@ -48,7 +49,7 @@ const ItemCard = ({item, image, location, state, country, date, type, id, permis
           {permission ? <div className='flex gap-3'><button onClick={deleteItem} className='bg-red-500 p-2 rounded-full absolute text-white left-4 top-4 opacity-65 cursor-pointer'><Trash2 className='w-5 h-5'/></button><Link to={`/editpost/${id}`} onClick={(e) => e.stopPropagation()} className='bg-gray-400 p-2 rounded-full absolute text-white left-14 top-4 opacity-65'><Pencil className='w-5 h-5'/></Link></div>  :<div></div> }
         <div className={`absolute text-white top-5 right-5 px-3 text-sm rounded ${type == "Lost" ? 'bg-red-600' : 'bg-green-600'}`}>{type}</div>
         <div className='h-43 rounded-2xl w-full overflow-hidden bg-gray-100'>
-          <img src={`${image}`} alt="" className='h-45'/>
+          <img src={`${image}`} alt="image" className='h-45'/>
         </div>
         <div className='mt-3 w-full'>
           <p className='text-2xl font-bold'>{item}</p>

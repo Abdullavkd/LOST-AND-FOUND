@@ -16,8 +16,8 @@ export const postProduct = async (req, res) => {
         }
 
         const {item, location, state, image, country, type} = req.body;
-        if(!item || !location || !state || !country || !type) {
-            return res.status(404).json("item, location, state, country and type are required");
+        if(!item || !location || !state || !country || !type || !image) {
+            return res.status(404).json("item, location, state, image, country and type are required");
         }
 
         // check is it lost or found
