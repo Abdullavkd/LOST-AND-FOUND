@@ -32,7 +32,7 @@ const productSchema = new mongoose.Schema({
         default: "Active"
     },
     date: {
-        type: Number,
+        type: Date,
         default: Date.now()
     },
     owner: {

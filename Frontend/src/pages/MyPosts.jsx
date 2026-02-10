@@ -29,7 +29,7 @@ const MyPosts = () => {
         <div>
             <div className='flex justify-between'>
                 <Link to={-1} className='inline-block'><ArrowLeft className='bg-white rounded-full p-3 w-11 h-11 ml-3 mt-3'/></Link>
-                <div className='mr-3 mt-3'><button onClick={() => {localStorage.removeItem('user'); window.location.href='/login'}} className='cursor-pointer bg-orange-600 text-white rounded-full px-5 py-2'>Logout</button></div>
+                <div className='mr-3 mt-3'><button onClick={() => {localStorage.removeItem('user'); window.location.replace('/login')}} className='cursor-pointer bg-orange-600 text-white rounded-full px-5 py-2'>Logout</button></div>
             </div>
             <div className='flex mb-15'>
                 <h1 className='text-5xl font-bold m-auto'>My Posts</h1>
