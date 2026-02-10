@@ -6,7 +6,9 @@ import DataContext from '../Context/DataContext';
 const DataProvider = ({children}) => {
     const [product, setProduct] = useState(products);
     const [registration, setRegistration] = useState(registrations)
-  return <DataContext.Provider value={{product, setProduct, registration, setRegistration}}>
+
+    const [searchQuery, setSearchQuery] = useState('')
+  return <DataContext.Provider value={{product, setProduct, registration, setRegistration, searchQuery, setSearchQuery}}>
         {children}
       </DataContext.Provider>
 };

@@ -26,8 +26,10 @@ const MyPosts = () => {
         myPosts()
     },[refresh]);
 
+
+
     useEffect(() => {
-        const getItems = async () => {
+        const getUserId = async () => {
             try {
                 const res = await api.get('/userId');
                 setUserId(res.data);
@@ -36,7 +38,7 @@ const MyPosts = () => {
                 console.log(error)
             }
         }
-        getItems();
+        getUserId();
     },[])
 
     const logout = async () => {
