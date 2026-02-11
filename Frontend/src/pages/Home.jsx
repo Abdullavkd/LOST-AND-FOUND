@@ -2,7 +2,6 @@
 import DataContext from '../Context/DataContext';
 import ItemCard from '../Components/ItemCard';
 import { memo, useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import api from '../Services/api';

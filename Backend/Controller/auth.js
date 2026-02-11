@@ -54,6 +54,10 @@ export const userRegister = async (req, res) => {
 
 
 
+
+
+
+
 /**
  * Function to login
  * @param {*} req 
@@ -79,13 +83,39 @@ export const userLogin = async (req, res) => {
             return res.status(404).json("Wrong Password");
         }
 
-        // create JWT
-        const token = jwt.sign(
+        // create ACCESS_TOKEN (JWT)
+        const accessToken = jwt.sign(
             {id: user.id},
-            process.env.SECRET_KEY
+            process.env.ACCESS_TOKEN_SECRET,
+            {expiresIn: '15m'}
+        );
+        
+        
+        // create ACCESS_TOKEN (JWT)
+        const refreshToken = jwt.sign(
+            {id: user.id},
+            process.env.REFRESH_TOKEN_SECRET,
+            {expiresIn: '7d'}
         );
 
-        if(!token) {
+        // send refresh token to cookies
+        res.cookie('accessToken', accessToken, {
+            httpOnly: true,
+            secure: false,
+            sameSite: 'strict',
+            maxAge: 15 * 60 * 1000
+        })
+
+
+        // send access token to cookies
+        res.cookie('refreshToken', refreshToken, {
+            httpOnly: true,
+            secure: false,
+            sameSite: 'strict',
+            maxAge: 7 * 24 * 60 * 60 * 1000 
+        })
+
+        if(!accessToken || !refreshToken) {
             return res.status(404).json("Something Went Wrong");
         }
 
@@ -93,7 +123,6 @@ export const userLogin = async (req, res) => {
             user:{
                 name: user.name,
                 email: email,
-                token: `Bearer ${token}`
             }
         })
     } catch (error) {

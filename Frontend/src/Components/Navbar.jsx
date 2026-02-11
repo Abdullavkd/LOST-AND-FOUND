@@ -32,7 +32,7 @@ const clearSearch = () => {
 
           {/*  User & Actions (Visible only on small screens) */}
           <div className='flex md:hidden items-center gap-3'>
-            <Link to={localStorage.getItem('user') ? '/myposts' : '/login'} onClick={clearSearch}>
+            <Link to={'/myposts'} onClick={clearSearch}>
               <User className='w-6 h-6 text-gray-600' />
             </Link>
             <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -73,7 +73,7 @@ const clearSearch = () => {
             Report Item
           </Link>
           <Link 
-            to={localStorage.getItem('user') ? '/myposts' : '/login'} 
+            to={'/myposts'} 
             className='bg-gray-100 hover:bg-gray-200 rounded-full p-2.5 transition-colors' 
             onClick={clearSearch}
           >

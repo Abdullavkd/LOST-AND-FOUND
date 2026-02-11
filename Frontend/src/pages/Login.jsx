@@ -8,19 +8,20 @@ const Login = () => {
     const [email ,setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            // fetch data from backend
+            // send request
             const response = await api.post('/login', {email, password});
-            // set fetched data to localstorage
+            // set data to localstorage
             localStorage.setItem('user', JSON.stringify(response.data.user));
             // alert("Login Successful!");
-            Navigate('/')
-            window.location.reload();
+            // navigate to home
+            navigate('/')
+            // window.location.reload();
         } catch (error) {
             alert(error.response?.data || "Login Failed")
         }
