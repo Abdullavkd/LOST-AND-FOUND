@@ -32,9 +32,13 @@ const Home = () => {
         val.location.toLowerCase().includes(query)
       )
     })
+
+    if(filteredProducs.length < 1) {
+      return <h1 className='text-2xl m-auto font-bold'>No Item</h1>
+    }
     
   return (
-    <div className='lg:w-1024px md:w-768px sm:w-640px'>
+    <div className=''>
 
         {/* All items here */}
       <div className='grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>

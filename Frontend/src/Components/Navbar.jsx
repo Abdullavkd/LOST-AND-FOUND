@@ -1,12 +1,21 @@
 import { Menu, Search, User, X } from 'lucide-react';
-import { memo, useContext, useState } from 'react';
+import { memo, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import DataContext from '../Context/DataContext';
 
 const Navbar = () => {
-  const {setSearchQuery} = useContext(DataContext);
+  const {setSearchQuery, refreshNavbar} = useContext(DataContext);
   const [search, setSearch] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [user, setUser] = useState(false);
+  
+  useEffect(() => {
+    const refresh = () => {
+      setUser(JSON.parse(localStorage.getItem('user')));
+    }
+    refresh();
+  },[refreshNavbar])
+  user;
 
 const handleSubmit = (e) => {
   e.preventDefault();

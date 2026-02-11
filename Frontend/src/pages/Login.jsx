@@ -1,12 +1,14 @@
 import { ArrowLeft } from 'lucide-react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { memo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../Services/api';
+import DataContext from '../Context/DataContext';
 
 const Login = () => {
     const [email ,setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const {setRefreshNavbar} = useContext(DataContext)
 
     const navigate = useNavigate();
 
@@ -21,6 +23,7 @@ const Login = () => {
             // alert("Login Successful!");
             // navigate to home
             navigate('/')
+            setRefreshNavbar((prev) => !prev)
             // window.location.reload();
         } catch (error) {
             alert(error.response?.data || "Login Failed")

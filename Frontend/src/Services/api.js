@@ -5,9 +5,8 @@ const api = axios.create({
     withCredentials: true
 });
 
-api.interceptors.request.use((response) => response,
+api.interceptors.response.use((response) => response,
     async (error) => {
-        console.log(originalRequest)
         const originalRequest = error.config;
         // if error is 401
         if(error.response.status === 401 && !originalRequest._retry) {
@@ -17,7 +16,7 @@ api.interceptors.request.use((response) => response,
                 await axios.get('http://localhost:4000/refresh',{withCredentials: true})
                 return api(originalRequest)
             } catch (refreshError) {
-                window.location.href('/login')
+                window.location.href = '/login'
                 return Promise.reject(refreshError)
             }
         }
