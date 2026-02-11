@@ -55,7 +55,7 @@ const ItemCard = ({item, image, location, state, country, date, type, id, permis
         <div className='mt-3 w-full'>
           <p className='text-2xl font-bold'>{item}</p>
           <div className='w-full'>
-              <p>{location}, {state}, {country}</p>
+              <p className='truncate'>{location}, {state}, {country}</p>
               <div className='flex justify-between w-full items-center'>
                   <p>{timeAgo}</p>
                   <Link to={`/postdetails/${id}`} className={` px-5 py-1 rounded-full text-white ${type == "Lost" ? 'bg-red-600' : 'bg-green-600'}`}>View Details</Link>
