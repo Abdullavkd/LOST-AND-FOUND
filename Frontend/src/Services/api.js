@@ -7,10 +7,10 @@ const api = axios.create({
 
 api.interceptors.request.use((response) => response,
     async (error) => {
+        console.log(originalRequest)
         const originalRequest = error.config;
-        
         // if error is 401
-        if(error.response.status ===401 && !originalRequest._retry) {
+        if(error.response.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
 
             try {

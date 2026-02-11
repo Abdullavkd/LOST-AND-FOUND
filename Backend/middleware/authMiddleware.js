@@ -32,22 +32,22 @@ export const refreshAccessToken = (req, res) => {
 
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
         if(err) return res.status(403).josn("Invalid Refresh Token")
+
+        // create new access token
+        const newAccessToken = jwt.sign(
+            {id: decoded.id},
+            process.env.ACCESS_TOKEN_SECRET,
+            {expiresIn: '15m'}
+        )
+
+        // send new access token to a cookie
+        res.cookie('accessToken', newAccessToken, {
+            httpOnly: true, 
+            secure: false,
+            sameSite: 'strict',
+            maxAge: 15 * 60 * 1000
+        })
+
+        res.status(200).json("Token Refreshed");
     });
-
-    // create new access token
-    const newAccessToken = jwt.sign(
-        {id: decoded.id},
-        process.env.ACCESS_TOKEN_SECRET,
-        {expiresIn: '15m'}
-    )
-
-    // send new access token to a cookie
-    res.cookie('accessToken', newAccessToken, {
-        httpOnly: true, 
-        secure: false,
-        sameSite: 'strict',
-        maxAge: 15 * 60 * 1000
-    })
-
-    res.status(200).json("Token Refreshed");
 }
