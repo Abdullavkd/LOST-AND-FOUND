@@ -34,19 +34,19 @@ const PostDetails = () => {
         <Link to={-1} className='inline-block'><ArrowLeft className='bg-gray-200 rounded-full p-3 w-11 h-11 ml-3 mt-3'/></Link>
         <div className='flex flex-col gap-9 bg-white p-17 min-h-screen'>
         <div className='flex flex-col items-center'>
-            <p className='text-5xl md:text-6xl font-bold'>Post Details</p>
-            <p className='text-2xl md:text-3xl'>Informations About this Post</p>
+            <p className='text-3xl sm:text-5xl md:text-6xl font-bold'>Post Details</p>
+            <p className='text-lg sm:text-2xl md:text-3xl'>Informations About this Post</p>
         </div>
-        <div className='flex justify-center md:h-100 gap-11 items-center flex-col md:flex-row'>
-            <div className='h-80 w-100'>
+        <div className='flex justify-center md:h-85 gap-11 items-center flex-col md:flex-row'>
+            <div className='w-85 sm:w-100 h-full'>
                 <div className='w-full h-full object-cover flex justify-center items-center'>
                     <div className='h-full w-full object-cover flex justify-center items-center overflow-hidden rounded-2xl'>
                             <Camera className='w-25 h-25 m-auto mb-3 absolute'/>
-                        <img src={`${details.image}`} alt="" className='z-1 h-full w-full object-cover'/>
+                        <img src={`${details.image}`} alt="" className='z-1 h-full w-full object-cover max-h-101'/>
                     </div>
                 </div>
             </div>
-            <div className='w-101 flex items-center justify-center'>
+            <div className='w-85 sm:w-100 flex items-center justify-center'>
                 <div className='w-full text-2xl flex flex-col gap-3 bg-gray-100 p-5 rounded-2xl'>
                     <div className='flex justify-between w-full'>
                         <p>Title:</p>

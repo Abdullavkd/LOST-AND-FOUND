@@ -46,11 +46,11 @@ const PostItem = () => {
         <Link to={-1} className='inline-block'><ArrowLeft className='bg-gray-200 rounded-full p-3 w-11 h-11 ml-3 mt-3'/></Link>
         <div className='flex flex-col gap-17 bg-white p-17 min-h-screen'>
         <div className='flex flex-col items-center'>
-            <p className='text-5xl md:text-6xl font-bold'>Report An item</p>
+            <p className='text-3xl sm:text-5xl md:text-6xl font-bold'>Report An item</p>
             <p className='text-2xl md:text-3xl'>Enter Item Details</p>
         </div>
         <div className='flex justify-center md:h-100 gap-11 items-center flex-col md:flex-row'>
-            <div className='h-80 w-100'>
+            <div className='w-85 h-75 sm:h-80 sm:w-100 box-border'>
                 <div className='w-full h-full object-cover flex justify-center items-center'>
                     <div className='h-full w-full object-cover border flex justify-center items-center overflow-hidden rounded-2xl'>
                         <Link className='absolute'>
@@ -61,7 +61,7 @@ const PostItem = () => {
                     </div>
                 </div>
             </div>
-            <div className='w-100'>
+            <div className='w-85 sm:w-100'>
                 <div>
                     <div>
                         <form onSubmit={handleSubmit} className='flex flex-col gap-5 bg-gray-100 py-5 px-5 rounded-3xl border border-gray-400'>

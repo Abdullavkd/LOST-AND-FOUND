@@ -65,13 +65,13 @@ const EditItem = () => {
   return (
     <div className='flex flex-col gap-17 bg-white p-17 min-h-screen'>
       <div className='flex flex-col items-center'>
-        <p className='text-4xl font-bold'>Report An item</p>
-        <p className='text-2xl'>Enter Item Details</p>
+        <p className='text-3xl sm:text-5xl md:text-6xl font-bold'>Report An item</p>
+        <p className='text-2xl md:text-3xl'>Enter Item Details</p>
       </div>
-      <div className='flex justify-center gap-11'>
-        <div className=''>
-            <div className='w-full h-full flex justify-center items-center'>
-                <div className='h-80 w-80 border flex justify-center items-center overflow-hidden rounded-2xl'>
+      <div className='flex justify-center md:h-100 gap-11 items-center flex-col md:flex-row'>
+        <div className='w-85 h-75 sm:h-80 sm:w-100 box-border'>
+            <div className='w-full h-full object-cover flex justify-center items-center'>
+                <div className='h-full w-full object-cover border flex justify-center items-center overflow-hidden rounded-2xl'>
                     <Link className='absolute'>
                         <ImageIcon className='w-25 h-25 m-auto mb-3'/>
                         {/* <p className='bg-gray-300 py-1 px-3 m-auto border border-gray-500'>Upload Now</p> */}
@@ -80,7 +80,7 @@ const EditItem = () => {
                 </div>
             </div>
         </div>
-        <div className='w-100'>
+        <div className='w-85 sm:w-100'>
             <div>
                 <div>
                     <form onSubmit={handleSubmit} className='flex flex-col gap-5 bg-gray-100 py-5 px-5 rounded-3xl border border-gray-400'>

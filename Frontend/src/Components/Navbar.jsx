@@ -27,7 +27,7 @@ const clearSearch = () => {
         <div className='flex items-center justify-between w-full md:w-auto'>
           <Link to={'/'} className='font-black text-2xl shrink-0' onClick={clearSearch}>
             {/* <img src='https://i.ibb.co/fGyjjQg0/Untitled-design-2-1.png' alt='Logo' className='h-9 md:h-11'/> */}
-            <img src='https://i.ibb.co/BVsVCff0/2.png' alt='Logo' className='h-7 sm:h-9'/>
+            <img src='https://i.ibb.co/BVsVCff0/2.png' alt='Logo' className='h-7 sm:h-8'/>
           </Link>
 
           {/*  User & Actions (Visible only on small screens) */}
@@ -42,8 +42,8 @@ const clearSearch = () => {
         </div>
 
         {/* Search Bar (Full width on mobile, max-width on desktop) */}
-        <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex items-center grow justify-center w-full md:max-w-md lg:max-w-lg`}>
-          <div className='flex items-center w-full border border-gray-300 rounded-full pl-3 pr-1 bg-gray-50 focus-within:bg-white focus-within:border-orange-500 transition-all'>
+        <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex items-center grow justify-center w-full md:max-w-1/4 lg:max-w-md xl:max-w-xl`}>
+          <div className='flex items-center w-full border border-gray-300 rounded-full pl-3 pr-1 bg-gray-50 focus-within:bg-white focus-within:border-orange-500'>
             <Search size={18} className='text-gray-400'/>
             <form onSubmit={handleSubmit} className='flex w-full'>
               <input 
