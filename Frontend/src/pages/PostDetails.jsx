@@ -38,7 +38,7 @@ const PostDetails = () => {
             <p className='text-2xl md:text-3xl'>Informations About this Post</p>
         </div>
         <div className='flex justify-center md:h-100 gap-11 items-center flex-col md:flex-row'>
-            <div className=' h-80 w-100'>
+            <div className='h-80 w-100'>
                 <div className='w-full h-full object-cover flex justify-center items-center'>
                     <div className='h-full w-full object-cover flex justify-center items-center overflow-hidden rounded-2xl'>
                             <Camera className='w-25 h-25 m-auto mb-3 absolute'/>

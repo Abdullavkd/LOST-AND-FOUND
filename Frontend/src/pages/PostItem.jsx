@@ -46,18 +46,18 @@ const PostItem = () => {
         <Link to={-1} className='inline-block'><ArrowLeft className='bg-gray-200 rounded-full p-3 w-11 h-11 ml-3 mt-3'/></Link>
         <div className='flex flex-col gap-17 bg-white p-17 min-h-screen'>
         <div className='flex flex-col items-center'>
-            <p className='text-4xl font-bold'>Report An item</p>
-            <p className='text-2xl'>Enter Item Details</p>
+            <p className='text-5xl md:text-6xl font-bold'>Report An item</p>
+            <p className='text-2xl md:text-3xl'>Enter Item Details</p>
         </div>
-        <div className='flex justify-center h-100 gap-11'>
-            <div className=' h-100'>
-                <div className='w-full h-full flex justify-center items-center'>
-                    <div className='h-60 w-60 border flex justify-center items-center overflow-hidden rounded-2xl'>
+        <div className='flex justify-center md:h-100 gap-11 items-center flex-col md:flex-row'>
+            <div className='h-80 w-100'>
+                <div className='w-full h-full object-cover flex justify-center items-center'>
+                    <div className='h-full w-full object-cover border flex justify-center items-center overflow-hidden rounded-2xl'>
                         <Link className='absolute'>
                             <ImageIcon className='w-25 h-25 m-auto mb-3'/>
                             {/* <p className='bg-gray-300 py-1 px-3 m-auto border border-gray-500'>Upload Now</p> */}
                         </Link>
-                        <img src={`${image}`} alt="image" className='z-1 h-full'/>
+                        <img src={`${image}`} alt="image" className='z-1 h-full w-full object-cover'/>
                     </div>
                 </div>
             </div>
