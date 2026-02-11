@@ -32,7 +32,7 @@ const Login = () => {
     <div className='min-h-screen bg-white'>
         <Link to={-1} className='inline-block'><ArrowLeft className='bg-gray-200 rounded-full p-3 w-11 h-11 ml-3 mt-3'/></Link>
         <div className='flex justify-center items-center h-full w-full mt-21'>
-            <div className='bg-gray-200 w-101 p-7 rounded-3xl flex flex-col items-center gap-7'>
+            <div className='bg-gray-200 w-90 md:w-101 p-7 rounded-3xl flex flex-col items-center gap-7'>
                 <p className='text-4xl font-black'>Login</p>
                 <form onSubmit={handleSubmit} className='flex flex-col gap-5 w-full'>
                     <input type="email" placeholder='Enter Email Id'  className='w-full bg-white py-3 px-5 rounded-full text-xl outline-none' value={email} onChange={(e) => setEmail(e.target.value)}/>

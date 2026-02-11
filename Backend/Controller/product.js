@@ -28,7 +28,7 @@ export const postProduct = async (req, res) => {
         // save to database
         const savedItem = await productModel.create({
             item, location, state, image, country, type, owner: userId
-        })
+        });
         
         res.status(201).json({message: "Product Added Successfully", details: savedItem})
     } catch (error) {
