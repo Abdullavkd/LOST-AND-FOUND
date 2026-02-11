@@ -34,10 +34,10 @@ const PostDetails = () => {
         <Link to={-1} className='inline-block'><ArrowLeft className='bg-gray-200 rounded-full p-3 w-11 h-11 ml-3 mt-3'/></Link>
         <div className='flex flex-col gap-9 bg-white p-17 min-h-screen'>
         <div className='flex flex-col items-center'>
-            <p className='text-4xl font-bold'>Post Details</p>
-            <p className='text-2xl'>Informations About this Post</p>
+            <p className='text-5xl md:text-6xl font-bold'>Post Details</p>
+            <p className='text-2xl md:text-3xl'>Informations About this Post</p>
         </div>
-        <div className='flex justify-center h-100 gap-11 items-center'>
+        <div className='flex justify-center md:h-100 gap-11 items-center flex-col md:flex-row'>
             <div className=' h-80 w-100'>
                 <div className='w-full h-full object-cover flex justify-center items-center'>
                     <div className='h-full w-full object-cover flex justify-center items-center overflow-hidden rounded-2xl'>
