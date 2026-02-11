@@ -35,10 +35,10 @@ const Home = () => {
     })
     
   return (
-    <div>
+    <div className='lg:w-1024px md:w-768px sm:w-640px'>
 
         {/* All items here */}
-      <div className='grid grid-cols-4 gap-3'>
+      <div className='grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
         {filteredProducs.map(val => (
             <ItemCard key={val._id} item={val.item} image={val.image} country={val.country} location={val.location} date={val.date} state={val.state} type={val.type} id={val._id}/>
         ))}

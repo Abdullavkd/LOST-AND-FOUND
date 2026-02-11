@@ -18,7 +18,7 @@ const Login = () => {
             const response = await api.post('/login', {email, password});
             // set fetched data to localstorage
             localStorage.setItem('user', JSON.stringify(response.data.user));
-            alert("Login Successful!");
+            // alert("Login Successful!");
             Navigate('/')
             window.location.reload();
         } catch (error) {

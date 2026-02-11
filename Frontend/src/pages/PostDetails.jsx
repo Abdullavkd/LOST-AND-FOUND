@@ -37,12 +37,12 @@ const PostDetails = () => {
             <p className='text-4xl font-bold'>Post Details</p>
             <p className='text-2xl'>Informations About this Post</p>
         </div>
-        <div className='flex justify-center h-100 gap-11'>
-            <div className=' h-100'>
-                <div className='w-full h-full flex justify-center items-center'>
-                    <div className='min-h-35 w-91 border flex justify-center items-center overflow-hidden rounded-2xl'>
+        <div className='flex justify-center h-100 gap-11 items-center'>
+            <div className=' h-80 w-100'>
+                <div className='w-full h-full object-cover flex justify-center items-center'>
+                    <div className='h-full w-full object-cover flex justify-center items-center overflow-hidden rounded-2xl'>
                             <Camera className='w-25 h-25 m-auto mb-3 absolute'/>
-                        <img src={`${details.image}`} alt="" className='z-1'/>
+                        <img src={`${details.image}`} alt="" className='z-1 h-full w-full object-cover'/>
                     </div>
                 </div>
             </div>
