@@ -26,7 +26,8 @@ const clearSearch = () => {
         {/* Logo and Mobile Icons */}
         <div className='flex items-center justify-between w-full md:w-auto'>
           <Link to={'/'} className='font-black text-2xl shrink-0' onClick={clearSearch}>
-            <img src='https://i.ibb.co/fGyjjQg0/Untitled-design-2-1.png' alt='Logo' className='h-9 md:h-11'/>
+            {/* <img src='https://i.ibb.co/fGyjjQg0/Untitled-design-2-1.png' alt='Logo' className='h-9 md:h-11'/> */}
+            <img src='https://i.ibb.co/BVsVCff0/2.png' alt='Logo' className='h-7 sm:h-9'/>
           </Link>
 
           {/*  User & Actions (Visible only on small screens) */}
