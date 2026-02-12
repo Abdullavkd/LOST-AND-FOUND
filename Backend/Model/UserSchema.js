@@ -23,7 +23,7 @@ const userSchema = mongoose.Schema({
     status: {
         type: String,
         required: true,
-        default: 'unblocked',
+        default: 'active',
         enum: ['blocked', 'active']
     }
 })

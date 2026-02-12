@@ -24,7 +24,7 @@ export const userRegister = async (req, res) => {
         //is user Exist
         const isExist = await userModel.findOne({email:email});
         if(isExist) {
-            return res.status(404).json("User already exist")
+            return res.status(400).json("User already exist")
         }
 
         // hash password

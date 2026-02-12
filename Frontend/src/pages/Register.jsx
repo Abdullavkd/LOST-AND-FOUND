@@ -19,15 +19,18 @@ const Register = () => {
             const response = await api.post('/register',{
                 name, email, password
             })
+            
             alert(response.data.message);
+
+            setName('');
+            setEmail('')
+            setPassword('')
+
             Navigate('/login')
         } catch (error) {
-            alert(error.data.message || "Registaration Failed")
+            console.log(error.response.data)
+            alert(error.response.data || "Registaration Failed")
         }
-
-        setName('');
-        setEmail('')
-        setPassword('')
     }
   return (
     <div className='min-h-screen bg-white'>
