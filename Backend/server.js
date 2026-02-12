@@ -4,6 +4,7 @@ import authRouter from './Router/auth.js';
 import productRouter from './Router/product.js';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import userRouter from './Router/userRouter.js';
 
 
 const app = express();
@@ -20,6 +21,7 @@ app.use(cors({
 app.use(express.json())
 
 app.use("/", authRouter)
+app.use("/", userRouter)
 app.use('/api/items', productRouter)
 
 async function start() {
