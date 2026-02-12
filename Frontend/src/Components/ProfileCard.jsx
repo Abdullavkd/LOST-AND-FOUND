@@ -12,12 +12,14 @@ const ProfileCard = ({name, email, role, status, id, isDelete, userId, isOpen, i
     // function to delete user
     const deleteUser = async (e) => {
       e.stopPropagation()
-      confirm("Are You Sure Delete?")
-      try {
-        await api.delete(`/delete/${id}`)
-        isDelete()
-      } catch (error) {
-        console.log(error)
+      const isConfirm = confirm("Are You Sure Delete?")
+      if(isConfirm) {
+        try {
+          await api.delete(`/delete/${id}`)
+          isDelete()
+        } catch (error) {
+          console.log(error)
+        }
       }
     }
     
@@ -28,18 +30,18 @@ const ProfileCard = ({name, email, role, status, id, isDelete, userId, isOpen, i
     else if(profileIcon[0] >= 'Q' && profileIcon <= 'U') profileCol = 'bg-pink-300';
     else if(profileIcon[0] >= 'V' && profileIcon <= 'Z') profileCol = 'bg-red-300';
   return (
-    <div>
+    <div className='hover:scale-102'>
       <div className=' bg-white rounded-3xl flex flex-col items-center p-5 '>
         {id !== userId ? isOpen && (
           <div className='relative'>
-            <button className='absolute bg-white w-21 p-1 -left-5 hover:bg-gray-200 shadow'
+            <button className='absolute bg-white w-21 p-1 -left-5 hover:bg-gray-200 shadow cursor-pointer'
             onClick={deleteUser}
             >Delete</button>
           </div>
         ): <p className='size-5 font-bold'>You</p>}
             {id !== userId ?<div className='flex justify-end w-full'><button
             onClick={(e) => {isOpenAny(prev => !prev);e.stopPropagation()}}
-            className=''>
+            className='cursor-pointer'>
               <EllipsisVertical className='size-5'/>
             </button></div>: null}
             <div className={`bg-gray-300 rounded-full h-27 w-27 mb-5 flex items-center justify-center text-4xl font-black ${profileCol}`}>{profileIcon}</div>
