@@ -31,8 +31,8 @@ const MyPosts = () => {
     useEffect(() => {
         const getUserId = async () => {
             try {
-                const res = await api.get('/userId');
-                setUserId(res.data);
+                const res = await api.get('/user');
+                setUserId(res.data._id);
                 // console.log(res.data)
             } catch (error) {
                 console.log(error)

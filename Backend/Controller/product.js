@@ -1,6 +1,7 @@
 import { response } from "express";
 import productModel from "../Model/productSchema.js";
 import mongoose from "mongoose";
+import userModel from "../Model/UserSchema.js";
 
 /**
  * Function to post a lost/found item
@@ -98,10 +99,11 @@ export const updateProduct = async (req, res) => {
 
         // check is access to do it for user
         const userId = req.user.id;
+        const user = await userModel.findById(userId);
         if(!userId) {
             return res.status(404).json("There is no userId");
         }
-        if(product.owner.toString() !== userId) {
+        if(product.owner.toString() !== userId && user.role !== 'admin') {
             return res.status(403).json("You have no access to update this item")
         }
         
@@ -137,11 +139,13 @@ export const deleteProduct = async (req, res) => {
 
         // check access of user
         const userId = req.user.id;
+        const user = await userModel.findById(userId);
     
         if(!userId) {
             return res.status(404).json("There is no userId Provided");
         }
-        if(product.owner.toString() !== userId) {
+
+        if(product.owner.toString() !== userId && user.role !== 'admin') {
             return res.status(404).json("You have no access to delete it")
         }
 

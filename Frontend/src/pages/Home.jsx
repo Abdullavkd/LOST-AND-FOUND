@@ -9,6 +9,8 @@ import api from '../Services/api';
 const Home = () => {
     const [products, setProducts] = useState([]);
     const {searchQuery} = useContext(DataContext)
+    const [userRole, setUserRole] = useState('');
+    const [refresh, setRefresh] = useState(false)
 
     useEffect(() => {
         const getItems = async () => {
@@ -21,8 +23,27 @@ const Home = () => {
             }
         }
         getItems();
+    },[refresh])
+
+
+    // take user details
+    useEffect(() => {
+      const getUserRole = async () => {
+        try {
+          const user = await api.get('/user');
+          setUserRole(user.data.role)
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      getUserRole();
     },[])
 
+    // if admin set full access to delete and edit
+    let permission = false;
+    if(userRole === 'admin') {
+      permission = true;
+    }
 
     // filter products for search
     const filteredProducs = products.filter(val => {
@@ -43,7 +64,7 @@ const Home = () => {
         {/* All items here */}
       <div className='grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
         {filteredProducs.map(val => (
-            <ItemCard key={val._id} item={val.item} image={val.image} country={val.country} location={val.location} date={val.date} state={val.state} type={val.type} id={val._id}/>
+            <ItemCard key={val._id} item={val.item} image={val.image} country={val.country} location={val.location} date={val.date} state={val.state} type={val.type} id={val._id} permission={permission} isDeleted={() => setRefresh(prev => !prev)}/>
         ))}
       </div>
     </div>
