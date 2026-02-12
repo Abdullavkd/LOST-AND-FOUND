@@ -4,15 +4,16 @@ import api from '../Services/api';
 import { useEffect } from 'react';
 import ItemCard from '../Components/ItemCard';
 import { ArrowLeft } from 'lucide-react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 
 const Profile = () => {
     const [myPost, setMyPost] = useState([]);
     const [refresh, setRefresh] = useState(false);
     const [user, setUser] = useState("");
+    const {id} = useParams();
 
     const navigate = useNavigate();
-    
+
     useEffect(() => {
         const myPosts = async () => {
             try {
@@ -23,8 +24,18 @@ const Profile = () => {
                 console.log(error)
             }
         }
-        myPosts()
-    },[refresh]);
+
+        const userDetails = async () => {
+            try {
+                const res = await api.get(`/api/items/user/${id}`)
+                setMyPost(res.data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        if(id) userDetails();
+        else myPosts()
+    },[refresh, id]);
 
 
 
@@ -38,19 +49,41 @@ const Profile = () => {
                 console.log(error)
             }
         }
-        getUserId();
-    },[])
+        
 
-    const logout = async () => {
-        try {
-            await api.post(`/logout/${user._id}`);
-            // console.log(res.data)
-            localStorage.removeItem('user');
-            navigate('/login')
-        } catch (error) {
-            console.log(error);
+        const getUser = async () => {
+            try {
+                const res = await api.get(`/user/${id}`);
+                setUser(res.data);
+                // console.log(res.data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        
+
+        if(id) getUser();
+        else getUserId();
+    },[id])
+
+
+    let logout;
+    if(!id) {
+        logout = async () => {
+            const isConfirm = confirm("Are You Sure To Logout?");
+            if(isConfirm) {
+                try {
+                    await api.post(`/logout/${user._id}`);
+                    // console.log(res.data)
+                    localStorage.removeItem('user');
+                    navigate('/login')
+                } catch (error) {
+                    console.log(error);
+                }
+            }
         }
     }
+    
     
     
   return (
@@ -59,8 +92,9 @@ const Profile = () => {
             <div className='flex justify-between'>
                 <Link to={-1} className='inline-block'><ArrowLeft className='bg-white rounded-full p-3 w-11 h-11 ml-3 mt-3'/></Link>
                 <div className='mr-3 mt-3 flex gap-3'>
-                    {user.role !== 'admin' ? "":<Link to={'/userslist'} className='cursor-pointer bg-orange-600 text-white rounded-full px-5 py-2 text-sm sm:text-lg'>All Users</Link>}
-                    <button onClick={() => logout()} className='cursor-pointer bg-orange-600 text-white rounded-full px-5 py-2 text-sm sm:text-lg'>Logout</button></div>
+                    {user.role !== 'admin' && !id ? "":<Link to={'/userslist'} className='cursor-pointer bg-orange-600 text-white rounded-full px-5 py-2 text-sm sm:text-lg'>All Users</Link>}
+                    {!id && <button onClick={() => logout()} className='cursor-pointer bg-orange-600 text-white rounded-full px-5 py-2 text-sm sm:text-lg'>Logout</button>}
+                </div>
             </div>
         </div>
         <div className='flex flex-col mb-15 mx-3'>
@@ -85,7 +119,7 @@ const Profile = () => {
             </div>
         </div>
         <div className='flex'>
-                <h1 className='text-4xl md:text-5xl font-bold m-auto mb-3 '>{myPost.length < 1 ? "No Posts" : "My Posts"}</h1>
+                <h1 className='text-4xl md:text-5xl font-bold m-auto mb-3 '>{myPost.length < 1 ? "No Posts" : id ? "Posts" : "My Posts"}</h1>
             </div>
         <div className='grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
             {myPost.map(val => (

@@ -30,7 +30,7 @@ const clearSearch = () => {
 }
   return (
     <nav className='bg-white sticky top-0 z-50 border-b border-gray-100'>
-      <div className='max-w-7xl mx-auto px-4 md:px-9 h-auto md:h-20 flex flex-col md:flex-row md:items-center justify-between py-3 md:py-0 gap-4'>
+      <div className='max-w-361 mx-auto px-4 md:px-9 h-auto md:h-20 flex flex-col md:flex-row md:items-center justify-between py-3 md:py-0 gap-4'>
         
         {/* Logo and Mobile Icons */}
         <div className='flex items-center justify-between w-full md:w-auto'>
@@ -41,7 +41,7 @@ const clearSearch = () => {
 
           {/*  User & Actions (Visible only on small screens) */}
           <div className='flex md:hidden items-center gap-3'>
-            <Link to={'/myposts'} onClick={clearSearch}>
+            <Link to={'/profile'} onClick={clearSearch}>
               <User className='w-6 h-6 text-gray-600' />
             </Link>
             <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -51,7 +51,7 @@ const clearSearch = () => {
         </div>
 
         {/* Search Bar (Full width on mobile, max-width on desktop) */}
-        <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex items-center grow justify-center w-full md:max-w-1/4 lg:max-w-md xl:max-w-xl`}>
+        <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex items-center grow justify-center w-full md:max-w-3/9 lg:max-w-lg xl:max-w-xl`}>
           <div className='flex items-center w-full border border-gray-300 rounded-full pl-3 pr-1 bg-gray-50 focus-within:bg-white focus-within:border-orange-500'>
             <Search size={18} className='text-gray-400'/>
             <form onSubmit={handleSubmit} className='flex w-full'>
@@ -82,7 +82,7 @@ const clearSearch = () => {
             Report Item
           </Link>
           <Link 
-            to={'/myposts'} 
+            to={'/profile'} 
             className='bg-gray-100 hover:bg-gray-200 rounded-full p-2.5 transition-colors' 
             onClick={clearSearch}
           >

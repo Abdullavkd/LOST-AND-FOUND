@@ -21,7 +21,7 @@ function App() {
     <BrowserRouter>
     <DataProvider>
       <div className='mb-3 bg-white border-b'><Navbar /></div>
-      <div className='max-w-301 m-auto flex flex-col gap-3'>
+      <div className='max-w-351 m-auto flex flex-col gap-3'>
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/postitem' element={<ProtectedRoutes><PostItem/></ProtectedRoutes>}/>
@@ -29,7 +29,8 @@ function App() {
           <Route path='/login' element={<PublicRoutes><Login/></PublicRoutes>}/>
           <Route path='/logout/:id' element={<PublicRoutes><Login/></PublicRoutes>}/>
           <Route path='/register' element={<PublicRoutes><Register/></PublicRoutes>}/>
-          <Route path='/myposts' element={<ProtectedRoutes><Profile/></ProtectedRoutes>}/>
+          <Route path='/profile' element={<ProtectedRoutes><Profile/></ProtectedRoutes>}/>
+          <Route path='/profile/:id' element={<ProtectedRoutes><Profile/></ProtectedRoutes>}/>
           <Route path='/editpost/:id' element={<ProtectedRoutes><EditItem/></ProtectedRoutes>}/>
           <Route path='/userslist' element={<ProtectedRoutes><UsersList/></ProtectedRoutes>}/>
         </Routes>

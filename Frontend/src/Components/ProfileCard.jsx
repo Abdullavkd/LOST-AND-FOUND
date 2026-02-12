@@ -1,6 +1,7 @@
 import { EllipsisVertical } from 'lucide-react';
 import { memo } from 'react';
 import api from '../Services/api';
+import { Link } from 'react-router-dom';
 
 const ProfileCard = ({name, email, role, status, id, isDelete, userId, isOpen, isOpenAny}) => {
   // const [isOpen, setIsOpen] = useState(false);
@@ -25,12 +26,12 @@ const ProfileCard = ({name, email, role, status, id, isDelete, userId, isOpen, i
     
     let profileCol;
     if(profileIcon[0] >= 'A' && profileIcon <= 'E') profileCol = 'bg-green-300';
-    else if(profileIcon[0] >= 'F' && profileIcon <= 'J') profileCol = 'bg-blue-300';
+    else if(profileIcon[0] >= 'F' && profileIcon <= 'J') profileCol = 'bg-yellow-300';
     else if(profileIcon[0] >= 'K' && profileIcon <= 'P') profileCol = 'bg-orange-300';
     else if(profileIcon[0] >= 'Q' && profileIcon <= 'U') profileCol = 'bg-pink-300';
     else if(profileIcon[0] >= 'V' && profileIcon <= 'Z') profileCol = 'bg-red-300';
   return (
-    <div className='hover:scale-102'>
+    <Link to={`/profile/${id}`}><div className='hover:scale-102'>
       <div className=' bg-white rounded-3xl flex flex-col items-center p-5 '>
         {id !== userId ? isOpen && (
           <div className='relative'>
@@ -50,7 +51,7 @@ const ProfileCard = ({name, email, role, status, id, isDelete, userId, isOpen, i
             <p className='text-sm truncate text-center'>{role}</p>
             <p className='text-sm truncate text-center'>{status}</p>
         </div>
-    </div>
+    </div></Link>
   );
 };
 

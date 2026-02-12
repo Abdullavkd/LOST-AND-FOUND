@@ -181,3 +181,30 @@ export const myPosts = async (req, res) => {
         res.status(error.status || 500).json(error.message || "Something Went Wrong");
     }
 }
+
+
+
+
+
+
+
+export const posts = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const user = await userModel.findById(userId).select("-password");
+        
+        if(!userId || user.role !== 'admin') {
+            return res.status(404).json("You are not Authorized or You have no access for it");
+        }
+        
+        const id = req.params.id;
+        const products = await productModel.find({owner: id});
+        if(!products) {
+            return res.status(404).json("There is no product for This User");
+        }
+        
+        res.status(200).json(products)
+    } catch (error) {
+        res.status(error.status || 500).json(error.message || "Something Went Wrong");
+    }
+}
