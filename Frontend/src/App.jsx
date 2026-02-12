@@ -13,6 +13,7 @@ import Profile from './pages/Profile'
 import EditItem from './pages/EditItem'
 import ProtectedRoutes from './Components/ProtectedRoutes'
 import PublicRoutes from './Components/PublicRoutes'
+import UsersList from './pages/UsersList'
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
           <Route path='/register' element={<PublicRoutes><Register/></PublicRoutes>}/>
           <Route path='/myposts' element={<ProtectedRoutes><Profile/></ProtectedRoutes>}/>
           <Route path='/editpost/:id' element={<ProtectedRoutes><EditItem/></ProtectedRoutes>}/>
+          <Route path='/userslist' element={<ProtectedRoutes><UsersList/></ProtectedRoutes>}/>
         </Routes>
       </div>
     </DataProvider>
