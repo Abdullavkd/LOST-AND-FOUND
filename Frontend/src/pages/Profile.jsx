@@ -58,7 +58,9 @@ const Profile = () => {
         <div>
             <div className='flex justify-between'>
                 <Link to={-1} className='inline-block'><ArrowLeft className='bg-white rounded-full p-3 w-11 h-11 ml-3 mt-3'/></Link>
-                <div className='mr-3 mt-3'><button onClick={() => logout()} className='cursor-pointer bg-orange-600 text-white rounded-full px-5 py-2 text-sm sm:text-lg'>Logout</button></div>
+                <div className='mr-3 mt-3 flex gap-3'>
+                    {user.role !== 'admin' ? "":<Link to={'/userslist'} className='cursor-pointer bg-orange-600 text-white rounded-full px-5 py-2 text-sm sm:text-lg'>All Users</Link>}
+                    <button onClick={() => logout()} className='cursor-pointer bg-orange-600 text-white rounded-full px-5 py-2 text-sm sm:text-lg'>Logout</button></div>
             </div>
         </div>
         <div className='flex flex-col mb-15 mx-3'>

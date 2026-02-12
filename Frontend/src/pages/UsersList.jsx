@@ -2,12 +2,12 @@ import { memo, useEffect, useState } from 'react';
 import ProfileCard from '../Components/ProfileCard';
 import api from '../Services/api';
 import { useNavigate } from 'react-router-dom';
-import DataContext from '../Context/DataContext';
 
 const UsersList = () => {
     const [users, setUsers] = useState([]);
     const [refresh, setRefresh] = useState(false);
     const [userId, setUserId] = useState('')
+    const [isOpenId, setIsOpenId] = useState(null);
 
     const navigate = useNavigate();
 
@@ -45,11 +45,11 @@ const UsersList = () => {
     }
 
   return (
-    <div className='mt-11'>
+    <div className='mt-11' onClick={(e) => {setIsOpenId(null); e.stopPropagation()}}>
         <div className='flex justify-center mb-5'><h1 className='text-5xl font-bold'>All Users</h1></div>
         <div className='grid grid-cols-6 gap-3'>
             {users.map((user) => (
-                <ProfileCard key={user._id} name={user.name} email={user.email} role={user.role} status={user.status} id={user._id} isDelete={() => setRefresh(prev => !prev)} userId={userId}/>
+                <ProfileCard key={user._id} name={user.name} email={user.email} role={user.role} status={user.status} id={user._id} isDelete={() => setRefresh(prev => !prev)} userId={userId} isOpen={user._id === isOpenId} isOpenAny={() => setIsOpenId(user._id === isOpenId ? null: user._id)}/>
             ))}
         </div>
     </div>

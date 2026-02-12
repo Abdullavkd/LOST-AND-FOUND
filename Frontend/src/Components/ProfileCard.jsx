@@ -1,16 +1,17 @@
 import { EllipsisVertical } from 'lucide-react';
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import api from '../Services/api';
 
-const ProfileCard = ({name, email, role, status, id, isDelete, userId}) => {
-  const [isOpen, setIsOpen] = useState(false);
+const ProfileCard = ({name, email, role, status, id, isDelete, userId, isOpen, isOpenAny}) => {
+  // const [isOpen, setIsOpen] = useState(false);
 
   const profile = name.split(' ').map(val => val[0].toUpperCase());
   const profileIcon = profile.length > 2 ? profile.slice(0,2) : profile;
 
 
     // function to delete user
-    const deleteUser = async () => {
+    const deleteUser = async (e) => {
+      e.stopPropagation()
       confirm("Are You Sure Delete?")
       try {
         await api.delete(`/delete/${id}`)
@@ -37,10 +38,10 @@ const ProfileCard = ({name, email, role, status, id, isDelete, userId}) => {
           </div>
         ): <p className='size-5 font-bold'>You</p>}
             {id !== userId ?<div className='flex justify-end w-full'><button
-            onClick={() => setIsOpen(prev => !prev)}
+            onClick={(e) => {isOpenAny(prev => !prev);e.stopPropagation()}}
             className=''>
               <EllipsisVertical className='size-5'/>
-            </button></div>: ""}
+            </button></div>: null}
             <div className={`bg-gray-300 rounded-full h-27 w-27 mb-5 flex items-center justify-center text-4xl font-black ${profileCol}`}>{profileIcon}</div>
             <p className='text-blue-900 font-bold truncate text-center'>{name}</p>
             <p className='text-sm truncate w-full text-center'>{email}</p>
