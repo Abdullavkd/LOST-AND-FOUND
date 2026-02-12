@@ -24,7 +24,7 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
         default: 'unblocked',
-        enum: ['blocked', 'unblocked']
+        enum: ['blocked', 'active']
     }
 })
 

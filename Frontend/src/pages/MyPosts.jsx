@@ -9,7 +9,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 const MyPosts = () => {
     const [myPost, setMyPost] = useState([]);
     const [refresh, setRefresh] = useState(false);
-    const [userId, setUserId] = useState("");
+    const [user, setUser] = useState("");
 
     const navigate = useNavigate();
     
@@ -32,7 +32,7 @@ const MyPosts = () => {
         const getUserId = async () => {
             try {
                 const res = await api.get('/user');
-                setUserId(res.data._id);
+                setUser(res.data);
                 // console.log(res.data)
             } catch (error) {
                 console.log(error)
@@ -43,8 +43,8 @@ const MyPosts = () => {
 
     const logout = async () => {
         try {
-            const res = await api.post(`/logout/${userId}`);
-            console.log(res.data)
+            await api.post(`/logout/${user._id}`);
+            // console.log(res.data)
             localStorage.removeItem('user');
             navigate('/login')
         } catch (error) {
@@ -54,16 +54,37 @@ const MyPosts = () => {
     
     
   return (
-    <div>
+    <div className='flex flex-col gap-5'>
         <div>
             <div className='flex justify-between'>
                 <Link to={-1} className='inline-block'><ArrowLeft className='bg-white rounded-full p-3 w-11 h-11 ml-3 mt-3'/></Link>
                 <div className='mr-3 mt-3'><button onClick={() => logout()} className='cursor-pointer bg-orange-600 text-white rounded-full px-5 py-2 text-sm sm:text-lg'>Logout</button></div>
             </div>
-            <div className='flex mb-15'>
-                <h1 className='text-5xl font-bold m-auto'>My Posts</h1>
+        </div>
+        <div className='flex flex-col mb-15 mx-3'>
+            <h1 className='m-auto text-5xl font-bold mb-5'>Profile</h1>
+            <div className='grid gap-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4'>
+                <div className=''>
+                    <p className='pl-2'>Name</p>
+                    <p className='border border-blue-300 text-gray-800 font-bold px-2 py-1 bg-gray-100'>{user.name ? user.name :"Loading" }</p>
+                </div>
+                <div className=''>
+                    <p className='pl-2'>Email</p>
+                    <p className='border border-blue-300 text-gray-800 font-bold px-2 py-1 bg-gray-100'>{user.email ? user.email :"Loading" }</p>
+                </div>
+                <div className=''>
+                    <p className='pl-2'>Role</p>
+                    <p className='border border-blue-300 text-gray-800 font-bold px-2 py-1 bg-gray-100'>{user.role ? user.role :"Loading" }</p>
+                </div>
+                <div className=''>
+                    <p className='pl-2'>Status</p>
+                    <p className='border border-blue-300 text-gray-800 font-bold px-2 py-1 bg-gray-100'>{user.status ? user.status :"Loading" }</p>
+                </div>
             </div>
         </div>
+        <div className='flex'>
+                <h1 className='text-5xl font-bold m-auto'>My Posts</h1>
+            </div>
         <div className='grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
             {myPost.map(val => (
                 <ItemCard key={val._id} item={val.item} image={val.image} country={val.country} location={val.location} date={val.date} state={val.state} type={val.type} id={val._id} permission={true} isDeleted={() => setRefresh(prev => !prev)}/>
