@@ -180,7 +180,9 @@ export const userDelete = async (req, res) => {
         const {id} = req.params;
         // check access to do it
         const userId = req.user.id;
-        if(id.toString() !== userId) {
+        const user = await userModel.findById(userId).select("-password");
+
+        if(id.toString() !== userId && user.role !== "admin") {
             return res.status(404).json("You have no access to delete it");
         }
 

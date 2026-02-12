@@ -1,16 +1,51 @@
-import { Ellipsis } from 'lucide-react';
-import { memo } from 'react';
+import { EllipsisVertical } from 'lucide-react';
+import { memo, useState } from 'react';
+import api from '../Services/api';
 
-const ProfileCard = () => {
+const ProfileCard = ({name, email, role, status, id, isDelete, userId}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const profile = name.split(' ').map(val => val[0].toUpperCase());
+  const profileIcon = profile.length > 2 ? profile.slice(0,2) : profile;
+
+
+    // function to delete user
+    const deleteUser = async () => {
+      confirm("Are You Sure Delete?")
+      try {
+        await api.delete(`/delete/${id}`)
+        isDelete()
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    
+    let profileCol;
+    if(profileIcon[0] >= 'A' && profileIcon <= 'E') profileCol = 'bg-green-300';
+    else if(profileIcon[0] >= 'F' && profileIcon <= 'J') profileCol = 'bg-blue-300';
+    else if(profileIcon[0] >= 'K' && profileIcon <= 'P') profileCol = 'bg-orange-300';
+    else if(profileIcon[0] >= 'Q' && profileIcon <= 'U') profileCol = 'bg-pink-300';
+    else if(profileIcon[0] >= 'V' && profileIcon <= 'Z') profileCol = 'bg-red-300';
   return (
     <div>
       <div className=' bg-white rounded-3xl flex flex-col items-center p-5 '>
-            <Ellipsis className='ml-auto size-5'/>
-            <div className='bg-gray-300 rounded-full h-27 w-27 mb-5 flex items-center justify-center text-4xl font-black'>AB</div>
-            <p className='text-blue-900 font-bold'>Name Here</p>
-            <p>Email Here</p>
-            <p className='text-sm'>Role Here</p>
-            <p className='text-sm'>Status Here</p>
+        {id !== userId ? isOpen && (
+          <div className='relative'>
+            <button className='absolute bg-white w-21 p-1 -left-5 hover:bg-gray-200 shadow'
+            onClick={deleteUser}
+            >Delete</button>
+          </div>
+        ): <p className='size-5 font-bold'>You</p>}
+            {id !== userId ?<div className='flex justify-end w-full'><button
+            onClick={() => setIsOpen(prev => !prev)}
+            className=''>
+              <EllipsisVertical className='size-5'/>
+            </button></div>: ""}
+            <div className={`bg-gray-300 rounded-full h-27 w-27 mb-5 flex items-center justify-center text-4xl font-black ${profileCol}`}>{profileIcon}</div>
+            <p className='text-blue-900 font-bold truncate text-center'>{name}</p>
+            <p className='text-sm truncate w-full text-center'>{email}</p>
+            <p className='text-sm truncate text-center'>{role}</p>
+            <p className='text-sm truncate text-center'>{status}</p>
         </div>
     </div>
   );
