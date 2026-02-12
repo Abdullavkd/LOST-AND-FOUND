@@ -6,7 +6,7 @@ import ItemCard from '../Components/ItemCard';
 import { ArrowLeft } from 'lucide-react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
-const MyPosts = () => {
+const Profile = () => {
     const [myPost, setMyPost] = useState([]);
     const [refresh, setRefresh] = useState(false);
     const [user, setUser] = useState("");
@@ -62,7 +62,7 @@ const MyPosts = () => {
             </div>
         </div>
         <div className='flex flex-col mb-15 mx-3'>
-            <h1 className='m-auto text-5xl font-bold mb-5'>Profile</h1>
+            <h1 className='m-auto text-4xl md:text-5xl font-bold mb-5'>Profile</h1>
             <div className='grid gap-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4'>
                 <div className=''>
                     <p className='pl-2'>Name</p>
@@ -83,7 +83,7 @@ const MyPosts = () => {
             </div>
         </div>
         <div className='flex'>
-                <h1 className='text-5xl font-bold m-auto'>My Posts</h1>
+                <h1 className='text-4xl md:text-5xl font-bold m-auto mb-3 '>{myPost.length < 1 ? "No Posts" : "My Posts"}</h1>
             </div>
         <div className='grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
             {myPost.map(val => (
@@ -94,4 +94,4 @@ const MyPosts = () => {
   );
 };
 
-export default memo(MyPosts);
+export default memo(Profile);

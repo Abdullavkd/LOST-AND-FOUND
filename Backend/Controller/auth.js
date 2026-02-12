@@ -101,7 +101,7 @@ export const userLogin = async (req, res) => {
         // send refresh token to cookies
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
-            secure: false,
+            secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict',
             maxAge: 15 * 60 * 1000
         })
@@ -110,7 +110,7 @@ export const userLogin = async (req, res) => {
         // send access token to cookies
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
-            secure: false,
+            secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict',
             maxAge: 7 * 24 * 60 * 60 * 1000 
         })
@@ -210,6 +210,21 @@ export const userDelete = async (req, res) => {
  */
 export const userLogout = async (req, res) => {
     try {
+        // clear access token
+        res.clearCookie('accessTeoken',{
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict'
+        })
+
+        // clear refresh token
+        res.clearCookie('refreshToken', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+            path: '/refresh'
+        })
+
         const {id} = req.params;
 
         const user = await userModel.findById(id);
@@ -227,9 +242,47 @@ export const userLogout = async (req, res) => {
 
 export const user = async (req, res) => {
     try {
-        const user = await userModel.findById(req.user.id);
+        const user = await userModel.findById(req.user.id).select("-password");
         res.status(200).json(user)
     } catch (error) {
         res.status(error.status || 500).json(error.message || "Server Erro")
     }
+}
+
+
+
+
+
+
+/**
+ * Function to Refresh Access Token
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
+export const refreshAccessToken = (req, res) => {
+    const refreshToken = req.cookies?.refreshToken;
+
+    if(!refreshToken) return res.status(403).json("No Refresh Token");
+
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
+        if(err) return res.status(403).josn("Invalid Refresh Token")
+
+        // create new access token
+        const newAccessToken = jwt.sign(
+            {id: decoded.id},
+            process.env.ACCESS_TOKEN_SECRET,
+            {expiresIn: '15m'}
+        )
+
+        // send new access token to a cookie
+        res.cookie('accessToken', newAccessToken, {
+            httpOnly: true, 
+            secure: false,
+            sameSite: 'strict',
+            maxAge: 15 * 60 * 1000
+        })
+
+        res.status(200).json("Token Refreshed");
+    });
 }

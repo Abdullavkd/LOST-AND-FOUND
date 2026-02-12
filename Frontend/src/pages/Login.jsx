@@ -22,6 +22,10 @@ const Login = () => {
             localStorage.setItem('user', JSON.stringify(response.data.user));
             // alert("Login Successful!");
             // navigate to home
+
+            setEmail('')
+            setPassword('')
+            
             navigate('/')
             setRefreshNavbar((prev) => !prev)
             // window.location.reload();
