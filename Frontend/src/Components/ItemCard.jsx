@@ -8,7 +8,7 @@ import api from '../Services/api';
 const ItemCard = ({item, image, location, state, country, date, type, id, permission, isDeleted}) => {
     const [now] = useState(() => Date.now())
     const navigate = useNavigate();
-    console.log(image)
+    
 
     const timeAgo = useMemo(() => {
         const msPerMinute = 60 * 1000;

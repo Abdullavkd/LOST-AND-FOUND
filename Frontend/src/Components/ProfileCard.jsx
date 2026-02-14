@@ -13,6 +13,7 @@ const ProfileCard = ({name, email, role, status, id, isDelete, userId, isOpen, i
     // function to delete user
     const deleteUser = async (e) => {
       e.stopPropagation()
+      e.preventDefault()
       const isConfirm = confirm("Are You Sure Delete?")
       if(isConfirm) {
         try {
@@ -31,7 +32,7 @@ const ProfileCard = ({name, email, role, status, id, isDelete, userId, isOpen, i
     else if(profileIcon[0] >= 'Q' && profileIcon <= 'U') profileCol = 'bg-pink-300';
     else if(profileIcon[0] >= 'V' && profileIcon <= 'Z') profileCol = 'bg-red-300';
   return (
-    <Link to={`/profile/${id}`}><div className='hover:scale-102'>
+    <Link to={(id === userId) ? '/profile' : `/profile/${id}}`}><div className='hover:scale-102'>
       <div className=' bg-white rounded-3xl flex flex-col items-center p-5 '>
         {id !== userId ? isOpen && (
           <div className='relative'>
@@ -41,7 +42,7 @@ const ProfileCard = ({name, email, role, status, id, isDelete, userId, isOpen, i
           </div>
         ): <p className='size-5 font-bold'>You</p>}
             {id !== userId ?<div className='flex justify-end w-full'><button
-            onClick={(e) => {isOpenAny(prev => !prev);e.stopPropagation()}}
+            onClick={(e) => {isOpenAny(prev => !prev);e.stopPropagation();e.preventDefault()}}
             className='cursor-pointer'>
               <EllipsisVertical className='size-5'/>
             </button></div>: null}

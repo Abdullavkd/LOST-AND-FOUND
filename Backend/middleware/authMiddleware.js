@@ -2,8 +2,8 @@ import jwt from 'jsonwebtoken';
 
 export const verifyToken = async (req, res, next) => {
     try {
-        const token = req.cookies?.accessToken;
-
+        const token = req.cookies.accessToken;
+        
         if(!token) {
             return res.status(401).json("Access Denied: No token provided");
         }

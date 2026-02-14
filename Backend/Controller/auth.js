@@ -212,19 +212,21 @@ export const userDelete = async (req, res) => {
  */
 export const userLogout = async (req, res) => {
     try {
+        
         // clear access token
-        res.clearCookie('accessTeoken',{
+        res.clearCookie('accessToken',{
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict'
         })
+        
 
         // clear refresh token
         res.clearCookie('refreshToken', {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict',
-            path: '/refresh'
+            path: '/'
         })
 
         const {id} = req.params;
@@ -247,7 +249,7 @@ export const user = async (req, res) => {
         const user = await userModel.findById(req.user.id).select("-password");
         res.status(200).json(user)
     } catch (error) {
-        res.status(error.status || 500).json(error.message || "Server Erro")
+        res.status(error.status || 500).json(error.message || "Server Error")
     }
 }
 

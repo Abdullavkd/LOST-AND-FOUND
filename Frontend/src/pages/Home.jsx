@@ -9,7 +9,7 @@ import api from '../Services/api';
 const Home = () => {
     const [products, setProducts] = useState([]);
     const {searchQuery} = useContext(DataContext)
-    const [userRole, setUserRole] = useState('');
+    const [userRole, setUserRole] = useState('user');
     const [refresh, setRefresh] = useState(false)
 
     useEffect(() => {
@@ -28,15 +28,17 @@ const Home = () => {
 
     // take user details
     useEffect(() => {
-      const getUserRole = async () => {
-        try {
-          const user = await api.get('/user');
-          setUserRole(user.data.role)
-        } catch (error) {
-          console.log(error);
+      if(localStorage.getItem('user')) {
+        const getUserRole = async () => {
+          try {
+            const user = await api.get('/user');
+            setUserRole(user.data.role)
+          } catch (error) {
+            console.log(error);
+          }
         }
+        getUserRole();
       }
-      getUserRole();
     },[])
 
     // if admin set full access to delete and edit
@@ -44,6 +46,7 @@ const Home = () => {
     if(userRole === 'admin') {
       permission = true;
     }
+    console.log(userRole)
 
     // filter products for search
     const filteredProducs = products.filter(val => {

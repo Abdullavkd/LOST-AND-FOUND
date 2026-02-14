@@ -13,12 +13,12 @@ const PostItem = () => {
     const [country, setCountry] = useState();
     const [type, setType] = useState();
     const [image, setImage] =useState();
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const permission = localStorage.getItem('user')
-        if(!permission) Navigate('/login')
-    },[Navigate])
+        if(!permission) navigate('/login')
+    },[navigate])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,7 +29,7 @@ const PostItem = () => {
         try {
             const response = await api.post('/api/items',{item, location, state, country, type, image});
             alert(response.data.message);
-            Navigate('/')
+            navigate('/')
         } catch (error) {
             alert(error.data.message || "Product Adding Failed")
         }
