@@ -1,19 +1,19 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import Navbar from './Components/Navbar'
-import ItemCard from './Components/ItemCard'
-import Home from './pages/Home'
+import Home from './pages/Home/Home'
+import PostItem from './pages/PostItem/PostItem'
+import PostDetails from './pages/PostDetails/PostDetails'
+import Login from './pages/Login/Login'
+import Profile from './pages/Profile/Profile'
+import EditItem from './pages/EditItem/EditItem'
+import Register from './pages/Register/Register'
+import Navbar from './Components/Navbar/Navbar'
+import ProtectedRoutes from './Components/ProtectedRoutes/ProtectedRoutes'
+import PublicRoutes from './Components/PublicRoutes/PublicRoutes'
+import UsersList from './pages/UsersList/UsersList'
 import DataProvider from './Provider/DataProvider'
-import PostItem from './pages/PostItem'
-import PostDetails from './pages/PostDetails'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Profile from './pages/Profile'
-import EditItem from './pages/EditItem'
-import ProtectedRoutes from './Components/ProtectedRoutes'
-import PublicRoutes from './Components/PublicRoutes'
-import UsersList from './pages/UsersList'
+
 
 function App() {
 

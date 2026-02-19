@@ -3,7 +3,8 @@ import { useMemo } from 'react';
 import { useState } from 'react';
 import { memo } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import api from '../Services/api';
+import api from '../../Services/api';
+import './itemCard.css';
 
 const ItemCard = ({item, image, location, state, country, date, type, id, permission, isDeleted}) => {
     const [now] = useState(() => Date.now())
@@ -46,19 +47,19 @@ const ItemCard = ({item, image, location, state, country, date, type, id, permis
 
 
   return (
-      <div className=' rounded-3xl p-3 relative bg-white hover:scale-102 cursor-pointer' onClick={() => navigate(`/postdetails/${id}`)}>
+      <div className={"item-card"} onClick={() => navigate(`/postdetails/${id}`)}>
           {permission ? <div className='flex gap-3'><button onClick={deleteItem} className='bg-red-500 p-2 rounded-full absolute text-white left-4 top-4 opacity-65 cursor-pointer'><Trash2 className='w-5 h-5'/></button><Link onClick={(e) => e.stopPropagation()} to={`/editpost/${id}`} className='bg-gray-400 p-2 rounded-full absolute text-white left-14 top-4 opacity-65'><Pencil className='w-5 h-5'/></Link></div>  :<div></div> }
-        <div className={`absolute text-white top-5 right-5 px-3 text-sm rounded ${type == "Lost" ? 'bg-red-600' : 'bg-green-600'}`}>{type}</div>
-        <div className='h-63 sm:h-63 md:h-47 lg:h-43 rounded-2xl w-full overflow-hidden bg-gray-100 flex justify-center items-center'>
+        <div className={`inner-card ${type == "Lost" ? 'bg-red-600' : 'bg-green-600'}`}>{type}</div>
+        <div className='image'>
           <img src={`${image}`} alt="" className=''/>
         </div>
-        <div className='mt-3 w-full'>
-          <p className='text-2xl font-bold'>{item}</p>
-          <div className='w-full'>
+        <div className='text-area'>
+          <p className='title'>{item}</p>
+          <div>
               <p className='truncate'>{location}, {state}, {country}</p>
-              <div className='flex justify-between w-full items-center'>
+              <div className='bottom'>
                   <p>{timeAgo}</p>
-                  <Link to={`/postdetails/${id}`} className={` px-5 py-1 rounded-full text-white ${type == "Lost" ? 'bg-red-600' : 'bg-green-600'}`}>View Details</Link>
+                  <Link to={`/postdetails/${id}`} className={`link-button ${type == "Lost" ? 'bg-red-600' : 'bg-green-600'}`}>View Details</Link>
               </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:4000', // backend server port
+    baseURL: import.meta.env.VITE_BASE_URL , // backend server port
     withCredentials: true
 });
 
@@ -13,7 +13,7 @@ api.interceptors.response.use((response) => response,
             originalRequest._retry = true;
 
             try {
-                await axios.get('http://localhost:4000/refresh',{withCredentials: true})
+                await axios.get(import.meta.env.VITE_REFRESH_TOKEN_URL,{withCredentials: true})
                 return api(originalRequest)
             } catch (refreshError) {
                 window.location.href = '/login'

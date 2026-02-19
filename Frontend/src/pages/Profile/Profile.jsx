@@ -1,10 +1,9 @@
-import { useState } from 'react';
-import { memo } from 'react';
-import api from '../Services/api';
+import { memo, useState } from 'react';
 import { useEffect } from 'react';
-import ItemCard from '../Components/ItemCard';
 import { ArrowLeft } from 'lucide-react';
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
+import ItemCard from '../../Components/ItemCard/ItemCard';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import api from '../../Services/api';
 
 const Profile = () => {
     const [myPost, setMyPost] = useState([]);

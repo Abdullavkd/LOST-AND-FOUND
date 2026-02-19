@@ -1,10 +1,11 @@
 import { Menu, Search, User, X } from 'lucide-react';
 import { memo, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import DataContext from '../Context/DataContext';
+import Context from '../../Context/DataContext';
+import './Navbar.css';
 
 const Navbar = () => {
-  const {setSearchQuery, refreshNavbar} = useContext(DataContext);
+  const {setSearchQuery, refreshNavbar} = useContext(Context);
   const [search, setSearch] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [user, setUser] = useState(false);
@@ -29,20 +30,20 @@ const clearSearch = () => {
   setIsMenuOpen(false);
 }
   return (
-    <nav className='bg-white sticky top-0 z-50 border-b border-gray-100'>
-      <div className='max-w-361 mx-auto px-4 md:px-9 h-auto md:h-20 flex flex-col md:flex-row md:items-center justify-between py-3 md:py-0 gap-4'>
+    <nav className='main-div'>
+      <div className='inner-div'>
         
         {/* Logo and Mobile Icons */}
-        <div className='flex items-center justify-between w-full md:w-auto'>
-          <Link to={'/'} className='font-black text-2xl shrink-0' onClick={clearSearch}>
+        <div className='logo-div'>
+          <Link to={'/'} className='logo' onClick={clearSearch}>
             {/* <img src='https://i.ibb.co/fGyjjQg0/Untitled-design-2-1.png' alt='Logo' className='h-9 md:h-11'/> */}
             <img src='https://i.ibb.co/BVsVCff0/2.png' alt='Logo' className='h-7 sm:h-8'/>
           </Link>
 
           {/*  User & Actions (Visible only on small screens) */}
-          <div className='flex md:hidden items-center gap-3'>
+          <div className='user-sm-screen'>
             <Link to={'/profile'} onClick={clearSearch}>
-              <User className='w-6 h-6 text-gray-600' />
+              <User className='user-icon' />
             </Link>
             <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X /> : <Menu />}

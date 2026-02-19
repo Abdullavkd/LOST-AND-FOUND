@@ -2,8 +2,8 @@ import { ArrowLeft } from 'lucide-react';
 import { useContext, useState } from 'react';
 import { memo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import api from '../Services/api';
-import DataContext from '../Context/DataContext';
+import api from '../../Services/api';
+import DataContext from '../../Context/DataContext';
 
 const Login = () => {
     const [email ,setEmail] = useState('');

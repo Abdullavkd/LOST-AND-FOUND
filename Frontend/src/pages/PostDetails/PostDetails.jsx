@@ -2,9 +2,9 @@ import { ArrowLeft, Camera } from 'lucide-react';
 // import { useContext } from 'react';
 import { memo } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import DataContext from '../Context/DataContext';
+import DataContext from '../../Context/DataContext';
 import { useEffect } from 'react';
-import api from '../Services/api';
+import api from '../../Services/api';
 import { useState } from 'react';
 
 const PostDetails = () => {

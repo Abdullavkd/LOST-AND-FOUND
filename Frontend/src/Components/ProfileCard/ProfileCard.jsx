@@ -1,6 +1,6 @@
 import { EllipsisVertical } from 'lucide-react';
 import { memo } from 'react';
-import api from '../Services/api';
+import api from '../../Services/api';
 import { Link } from 'react-router-dom';
 
 const ProfileCard = ({name, email, role, status, id, isDelete, userId, isOpen, isOpenAny}) => {

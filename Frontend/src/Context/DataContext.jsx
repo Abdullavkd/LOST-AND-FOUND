@@ -1,4 +1,4 @@
 import { createContext } from "react";
 
-const DataContext = createContext("Context not Found!");
-export default DataContext;
+const Context = createContext("Context not Found!");
+export default Context;

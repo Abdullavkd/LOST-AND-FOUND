@@ -1,6 +1,6 @@
 import { memo, useEffect, useState } from 'react';
-import ProfileCard from '../Components/ProfileCard';
-import api from '../Services/api';
+import ProfileCard from '../../Components/ProfileCard/ProfileCard';
+import api from '../../Services/api';
 import { useNavigate } from 'react-router-dom';
 
 const UsersList = () => {

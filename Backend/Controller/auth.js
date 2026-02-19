@@ -98,7 +98,7 @@ export const userLogin = async (req, res) => {
             {expiresIn: '7d'}
         );
 
-        // send refresh token to cookies
+        // send access token to cookies
         res.cookie('accessToken', accessToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
@@ -107,7 +107,7 @@ export const userLogin = async (req, res) => {
         })
 
 
-        // send access token to cookies
+        // send refresh token to cookies
         res.cookie('refreshToken', refreshToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',

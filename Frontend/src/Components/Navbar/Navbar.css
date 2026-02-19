@@ -1,0 +1,67 @@
+.main-div {
+    background-color: white;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: .1px solid black;
+}
+.inner-div{
+    max-width: 87rem;
+    margin: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.logo-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.logo{
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+.user-sm-screen{
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.user-icon{
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #4b5563;
+}
+
+
+
+
+
+
+@media (min-width: 768px) {
+    .inner-div{
+        padding-top: 2.25rem;
+        padding-bottom: 2.25rem;
+        height: 20px;
+        flex-direction: row;
+        align-items: space-between;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        width: 100%;
+    }
+
+    .user-sm-screen{
+        display: none;
+    }
+}

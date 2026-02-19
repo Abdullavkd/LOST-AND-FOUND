@@ -199,7 +199,7 @@ export const posts = async (req, res) => {
         
         const id = req.params.id;
         const products = await productModel.find({owner: id});
-        if(!products) {
+        if(products.length < 1) {
             return res.status(404).json("There is no product for This User");
         }
         

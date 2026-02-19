@@ -1,10 +1,10 @@
 
-import DataContext from '../Context/DataContext';
-import ItemCard from '../Components/ItemCard';
+import DataContext from '../../Context/DataContext';
+import ItemCard from '../../Components/ItemCard/ItemCard';
 import { memo, useContext } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import api from '../Services/api';
+import api from '../../Services/api';
 
 const Home = () => {
     const [products, setProducts] = useState([]);

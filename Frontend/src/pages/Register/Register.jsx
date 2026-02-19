@@ -2,8 +2,8 @@ import { ArrowLeft } from 'lucide-react';
 import { useState } from 'react';
 import { memo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import DataContext from '../Context/DataContext';
-import api from '../Services/api';
+import DataContext from '../../Context/DataContext';
+import api from '../../Services/api';
 
 const Register = () => {
     const [name, setName] = useState();
