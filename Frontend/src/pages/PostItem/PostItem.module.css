@@ -1,0 +1,78 @@
+@import 'tailwindcss';
+
+.parentDiv{
+    @apply flex flex-col gap-17 bg-white p-17 min-h-screen
+}
+
+
+.backButton{
+    @apply inline-block
+}
+
+.arrowLeft{
+    @apply bg-gray-200 rounded-full p-3 w-11 h-11 ml-3 mt-3
+}
+
+.mainContentDiv{
+    @apply flex flex-col gap-9 bg-white p-17 min-h-screen
+}
+
+.titleDiv{
+    @apply flex flex-col items-center
+}
+
+.mainTitle{
+    @apply text-3xl sm:text-5xl md:text-6xl font-bold
+}
+
+.subTitle{
+    @apply text-2xl md:text-3xl
+}
+
+.bodyDiv{
+    @apply flex justify-center md:h-100 gap-11 items-center flex-col md:flex-row
+}
+
+.imageParent{
+    @apply w-85 h-75 sm:h-80 sm:w-100 box-border
+}
+
+.imageParentDiv{
+    @apply w-full h-full object-cover flex justify-center items-center
+}
+
+.imageDiv{
+    @apply h-full w-full object-cover border flex justify-center items-center overflow-hidden rounded-2xl
+}
+
+.imageLink{
+    @apply absolute
+}
+
+.imageIcon{
+    @apply w-25 h-25 m-auto mb-3
+}
+
+.image{
+    @apply z-1 h-full w-full object-cover
+}
+
+.form{
+    @apply flex flex-col gap-5 bg-gray-100 py-5 px-5 rounded-3xl border border-gray-400
+}
+
+.input{
+    @apply py-2 pl-3 rounded-full outline-none bg-white
+}
+
+.type{
+    @apply flex justify-center gap-5 mt-3
+}
+
+.inputButton{
+    @apply py-1 w-25 rounded-full
+}
+
+.submit{
+    @apply bg-blue-600 w-51 py-3 text-white font-bold text-2xl m-auto rounded-full mt-5
+}

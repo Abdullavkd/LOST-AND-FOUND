@@ -2,6 +2,7 @@ import { EllipsisVertical } from 'lucide-react';
 import { memo } from 'react';
 import api from '../../Services/api';
 import { Link } from 'react-router-dom';
+import styles from './ProfileCard.module.css'
 
 const ProfileCard = ({name, email, role, status, id, isDelete, userId, isOpen, isOpenAny}) => {
   // const [isOpen, setIsOpen] = useState(false);
@@ -32,25 +33,25 @@ const ProfileCard = ({name, email, role, status, id, isDelete, userId, isOpen, i
     else if(profileIcon[0] >= 'Q' && profileIcon <= 'U') profileCol = 'bg-pink-300';
     else if(profileIcon[0] >= 'V' && profileIcon <= 'Z') profileCol = 'bg-red-300';
   return (
-    <Link to={(id === userId) ? '/profile' : `/profile/${id}}`}><div className='hover:scale-102'>
-      <div className=' bg-white rounded-3xl flex flex-col items-center p-5 '>
+    <Link to={(id === userId) ? '/profile' : `/profile/${id}}`}><div className={styles.parentButton}>
+      <div className={styles.parentDiv}>
         {id !== userId ? isOpen && (
-          <div className='relative'>
-            <button className='absolute bg-white w-21 p-1 -left-5 hover:bg-gray-200 shadow cursor-pointer'
+          <div className={styles.isOpenDiv}>
+            <button className={styles.deleteButton}
             onClick={deleteUser}
             >Delete</button>
           </div>
-        ): <p className='size-5 font-bold'>You</p>}
-            {id !== userId ?<div className='flex justify-end w-full'><button
+        ): <p className={styles.you}>You</p>}
+            {id !== userId ? <div className={styles.isOpenButton}><button
             onClick={(e) => {isOpenAny(prev => !prev);e.stopPropagation();e.preventDefault()}}
-            className='cursor-pointer'>
-              <EllipsisVertical className='size-5'/>
+            className={styles.threeDotDiv}>
+              <EllipsisVertical className={styles.threeDot}/>
             </button></div>: null}
-            <div className={`bg-gray-300 rounded-full h-27 w-27 mb-5 flex items-center justify-center text-4xl font-black ${profileCol}`}>{profileIcon}</div>
-            <p className='text-blue-900 font-bold truncate text-center'>{name}</p>
-            <p className='text-sm truncate w-full text-center'>{email}</p>
-            <p className='text-sm truncate text-center'>{role}</p>
-            <p className='text-sm truncate text-center'>{status}</p>
+            <div className={`${styles.profileIcon} ${profileCol}`}>{profileIcon}</div>
+            <p className={styles.name}>{name}</p>
+            <p className={styles.email}>{email}</p>
+            <p className={styles.rolStatus}>{role}</p>
+            <p className={styles.rolStatus}>{status}</p>
         </div>
     </div></Link>
   );

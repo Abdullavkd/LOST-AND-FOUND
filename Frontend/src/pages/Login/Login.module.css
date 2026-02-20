@@ -1,0 +1,42 @@
+@import 'tailwindcss';
+
+.parentDiv{
+    @apply min-h-screen bg-white
+}
+
+.backButton{
+    @apply inline-block
+}
+
+.arrowLeft{
+    @apply bg-gray-200 rounded-full p-3 w-11 h-11 ml-3 mt-3
+}
+
+.loginDiv{
+    @apply flex justify-center items-center h-full w-full mt-21
+}
+
+.loginDivInner{
+    @apply bg-gray-200 w-90 md:w-101 mx-3 p-7 rounded-3xl flex flex-col items-center gap-7
+}
+
+.loginTitle{
+    @apply text-4xl font-black
+}
+
+.form{
+    @apply flex flex-col gap-5 w-full
+}
+
+.input{
+    @apply w-full bg-white py-3 px-5 rounded-full text-xl outline-none
+}
+
+.submit{
+    @apply bg-blue-800 text-white py-3 rounded-full text-2xl font-bold outline-none
+}
+
+.subTitle{
+    @apply text-blue-800
+}
+

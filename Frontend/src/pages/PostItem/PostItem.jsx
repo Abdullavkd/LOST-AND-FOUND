@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import DataContext from '../../Context/DataContext';
 import api from '../../Services/api';
 import { useEffect } from 'react';
+import styles from './PostItem.module.css'
 
 const PostItem = () => {
     const [item, setItem] = useState('');
@@ -42,42 +43,42 @@ const PostItem = () => {
         setImage('');
     }
   return (
-    <div className='bg-white'>
-        <Link to={-1} className='inline-block'><ArrowLeft className='bg-gray-200 rounded-full p-3 w-11 h-11 ml-3 mt-3'/></Link>
-        <div className='flex flex-col gap-17 bg-white p-17 min-h-screen'>
-        <div className='flex flex-col items-center'>
-            <p className='text-3xl sm:text-5xl md:text-6xl font-bold'>Report An item</p>
-            <p className='text-2xl md:text-3xl'>Enter Item Details</p>
+    <div className={styles.parentDiv}>
+        <Link to={-1} className={styles.backButton}><ArrowLeft className={styles.arrowLeft}/></Link>
+        <div className={styles.mainContentDiv}>
+        <div className={styles.titleDiv}>
+            <p className={styles.mainTitle}>Report An item</p>
+            <p className={styles.subTitle}>Enter Item Details</p>
         </div>
-        <div className='flex justify-center md:h-100 gap-11 items-center flex-col md:flex-row'>
-            <div className='w-85 h-75 sm:h-80 sm:w-100 box-border'>
-                <div className='w-full h-full object-cover flex justify-center items-center'>
-                    <div className='h-full w-full object-cover border flex justify-center items-center overflow-hidden rounded-2xl'>
-                        <Link className='absolute'>
-                            <ImageIcon className='w-25 h-25 m-auto mb-3'/>
+        <div className={styles.bodyDiv}>
+            <div className={styles.imageParent}>
+                <div className={styles.imageParentDiv}>
+                    <div className={styles.imageDiv}>
+                        <Link className={styles.imageLink}>
+                            <ImageIcon className={styles.imageIcon}/>
                             {/* <p className='bg-gray-300 py-1 px-3 m-auto border border-gray-500'>Upload Now</p> */}
                         </Link>
-                        <img src={`${image}`} alt="image" className='z-1 h-full w-full object-cover'/>
+                        <img src={`${image}`} alt="image" className={styles.image}/>
                     </div>
                 </div>
             </div>
             <div className='w-85 sm:w-100'>
                 <div>
                     <div>
-                        <form onSubmit={handleSubmit} className='flex flex-col gap-5 bg-gray-100 py-5 px-5 rounded-3xl border border-gray-400'>
-                            <input className='py-2 pl-3 rounded-full outline-none bg-white' type="text" placeholder='Item Title' value={item} onChange={(e) => setItem(e.target.value)}/>
-                            <input className='py-2 pl-3 rounded-full outline-none bg-white' type="text" placeholder='Place' value={location} onChange={(e) => setLocation(e.target.value)}/>
-                            <input className='py-2 pl-3 rounded-full outline-none bg-white' type="text" placeholder='State' value={state} onChange={(e) => setState(e.target.value)}/>
-                            <input className='py-2 pl-3 rounded-full outline-none bg-white' type="text" placeholder='Country' value={country} onChange={(e) => setCountry(e.target.value)}/>
-                            <input className='py-2 pl-3 rounded-full outline-none bg-white' type="text" placeholder='Image URL' value={image} onChange={(e) => setImage(e.target.value)}/>
-                            <div className='flex justify-center gap-5 mt-3'>
+                        <form onSubmit={handleSubmit} className={styles.form}>
+                            <input className={styles.input} type="text" placeholder='Item Title' value={item} onChange={(e) => setItem(e.target.value)}/>
+                            <input className={styles.input} type="text" placeholder='Place' value={location} onChange={(e) => setLocation(e.target.value)}/>
+                            <input className={styles.input} type="text" placeholder='State' value={state} onChange={(e) => setState(e.target.value)}/>
+                            <input className={styles.input} type="text" placeholder='Country' value={country} onChange={(e) => setCountry(e.target.value)}/>
+                            <input className={styles.input} type="text" placeholder='Image URL' value={image} onChange={(e) => setImage(e.target.value)}/>
+                            <div className={styles.type}>
                                 {["Lost", "Found"].map((r) => (
-                                    <button key={r} type='button' onClick={() => setType(r)} className={`py-1 w-25 rounded-full ${type === r ? type === 'Lost'? 'bg-red-700 text-white' : 'bg-green-700 text-white' : 'bg-gray-300'}`}>
+                                    <button key={r} type='button' onClick={() => setType(r)} className={`${styles.inputButton} ${type === r ? type === 'Lost'? 'bg-red-700 text-white' : 'bg-green-700 text-white' : 'bg-gray-300'}`}>
                                         {r}
                                     </button>
                                 ))}
                             </div>
-                            <input type="submit" className='bg-blue-600 w-51 py-3 text-white font-bold text-2xl m-auto rounded-full mt-5'/>
+                            <input type="submit" className={styles.submit}/>
                         </form>
                     </div>
                 </div>

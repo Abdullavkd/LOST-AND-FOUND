@@ -5,6 +5,7 @@ import { memo, useContext } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import api from '../../Services/api';
+import styles from './Home.module.css'
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -65,7 +66,7 @@ const Home = () => {
     <div className=''>
 
         {/* All items here */}
-      <div className='grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+      <div className={styles.parentDiv}>
         {filteredProducs.map(val => (
             <ItemCard key={val._id} item={val.item} image={val.image} country={val.country} location={val.location} date={val.date} state={val.state} type={val.type} id={val._id} permission={permission} isDeleted={() => setRefresh(prev => !prev)}/>
         ))}

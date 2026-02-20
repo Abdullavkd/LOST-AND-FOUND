@@ -52,20 +52,20 @@ const clearSearch = () => {
         </div>
 
         {/* Search Bar (Full width on mobile, max-width on desktop) */}
-        <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex items-center grow justify-center w-full md:max-w-3/9 lg:max-w-lg xl:max-w-xl`}>
-          <div className='flex items-center w-full border border-gray-300 rounded-full pl-3 pr-1 bg-gray-50 focus-within:bg-white focus-within:border-orange-500'>
+        <div className={`${isMenuOpen ? 'flex' : 'hidden'} search-bar-div`}>
+          <div className='search-bar'>
             <Search size={18} className='text-gray-400'/>
             <form onSubmit={handleSubmit} className='flex w-full'>
               <input 
                 type="text" 
                 placeholder='Search items...' 
-                className='outline-none p-2 w-full bg-transparent text-sm' 
+                className='input-field' 
                 value={search} 
                 onChange={(e) => setSearch(e.target.value)}
               />
               <button 
                 type="submit" 
-                className='bg-orange-600 text-white px-4 py-1.5 my-1 rounded-full text-xs font-bold hover:bg-orange-700 transition-colors'
+                className='search-button'
               >
                 SEARCH
               </button>

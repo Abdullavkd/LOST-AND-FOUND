@@ -1,0 +1,49 @@
+@import 'tailwindcss';
+
+.parentButton{
+    @apply hover:scale-102
+}
+
+.parentDiv{
+    @apply bg-white rounded-3xl flex flex-col items-center p-5
+}
+
+.deleteButton{
+    @apply absolute bg-white w-21 p-1 -left-5 hover:bg-gray-200 shadow cursor-pointer   
+}
+
+.you{
+    @apply size-5 font-bold
+}
+
+.profileIcon{
+    @apply rounded-full h-27 w-27 mb-5 flex items-center justify-center text-4xl font-black 
+}
+
+.name{
+    @apply text-blue-900 font-bold truncate text-center
+}
+
+.email{
+    @apply text-sm truncate w-full text-center
+}
+
+.roleStatus{
+    @apply text-sm truncate text-center
+}
+
+.threeDont{
+    @apply size-5
+}
+
+.threeDontDiv{
+    @apply cursor-pointer
+}
+
+.isOpenButton{
+    @apply flex justify-end w-full
+}
+
+.isOpenDiv{
+    @apply relative
+}

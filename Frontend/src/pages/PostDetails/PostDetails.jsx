@@ -6,6 +6,7 @@ import DataContext from '../../Context/DataContext';
 import { useEffect } from 'react';
 import api from '../../Services/api';
 import { useState } from 'react';
+import styles from './PostDetails.module.css'
 
 const PostDetails = () => {
     const { id } = useParams();
@@ -30,51 +31,51 @@ const PostDetails = () => {
     if(!details) return <h1>Staff Not Found</h1>
     // console.log(details)
   return (
-    <div className='bg-white'>
-        <Link to={-1} className='inline-block'><ArrowLeft className='bg-gray-200 rounded-full p-3 w-11 h-11 ml-3 mt-3'/></Link>
-        <div className='flex flex-col gap-9 bg-white p-17 min-h-screen'>
-        <div className='flex flex-col items-center'>
-            <p className='text-3xl sm:text-5xl md:text-6xl font-bold'>Post Details</p>
-            <p className='text-lg sm:text-2xl md:text-3xl'>Informations About this Post</p>
+    <div className={styles.parentDiv}>
+        <Link to={-1} className={styles.backButton}><ArrowLeft className={styles.arrowLeft}/></Link>
+        <div className={styles.mainContentDiv}>
+        <div className={styles.titleDiv}>
+            <p className={styles.mainTitle}>Post Details</p>
+            <p className={styles.subTitle}>Informations About this Post</p>
         </div>
-        <div className='flex justify-center md:h-85 gap-11 items-center flex-col md:flex-row'>
-            <div className='w-85 sm:w-100 h-full'>
-                <div className='w-full h-full object-cover flex justify-center items-center'>
-                    <div className='h-full w-full object-cover flex justify-center items-center overflow-hidden rounded-2xl'>
-                            <Camera className='w-25 h-25 m-auto mb-3 absolute'/>
-                        <img src={`${details.image}`} alt="" className='z-1 h-full w-full object-cover max-h-101'/>
+        <div className={styles.bodyDiv}>
+            <div className={styles.imageDiv}>
+                <div className={styles.imageDivInner}>
+                    <div className={styles.imageDivLast}>
+                            <Camera className={styles.imageIcon}/>
+                        <img src={`${details.image}`} alt="" className={styles.image}/>
                     </div>
                 </div>
             </div>
-            <div className='w-85 sm:w-100 flex items-center justify-center'>
-                <div className='w-full text-2xl flex flex-col gap-3 bg-gray-100 p-5 rounded-2xl'>
-                    <div className='flex justify-between w-full'>
+            <div className={styles.contentDiv}>
+                <div className={styles.contentDivInner}>
+                    <div className={styles.dataDiv}>
                         <p>Title:</p>
-                        <p className='text-3xl font-bold'>{details.item}</p>
+                        <p className={styles.dataTitle}>{details.item}</p>
                     </div>
-                    <div className='flex justify-between w-full'>
+                    <div className={styles.dataDiv}>
                         <p>place:</p>
-                        <p className='text-2xl font-bold'>{details.location}</p>
+                        <p className={styles.datas}>{details.location}</p>
                     </div>
-                    <div className='flex justify-between w-full'>
+                    <div className={styles.dataDiv}>
                         <p>state:</p>
-                        <p className='text-2xl font-bold'>{details.state}</p>
+                        <p className={styles.datas}>{details.state}</p>
                     </div>
-                    <div className='flex justify-between w-full'>
+                    <div className={styles.dataDiv}>
                         <p>country:</p>
-                        <p className='text-2xl font-bold'>{details.country}</p>
+                        <p className={styles.datas}>{details.country}</p>
                     </div>
-                    <div className='flex justify-between w-full'>
+                    <div className={styles.dataDiv}>
                         <p>date:</p>
-                        <p className='text-2xl font-bold'>{new Date(details.date).toLocaleDateString('en-GB',{'day':'numeric','month': 'short', 'year':'numeric'})}</p>
+                        <p className={styles.datas}>{new Date(details.date).toLocaleDateString('en-GB',{'day':'numeric','month': 'short', 'year':'numeric'})}</p>
                     </div>
-                    <div className='flex justify-between w-full'>
+                    <div className={styles.dataDiv}>
                         <p>type:</p>
-                        <p className='text-2xl font-bold'>{details.type}</p>
+                        <p className={styles.datas}>{details.type}</p>
                     </div>
-                    <div className='flex justify-between w-full'>
+                    <div className={styles.dataDiv}>
                         <p>status:</p>
-                        <p className='text-2xl font-bold'>{details.status}</p>
+                        <p className={styles.datas}>{details.status}</p>
                     </div>
                 </div>
             </div>
