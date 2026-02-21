@@ -3,6 +3,7 @@ import { memo, useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Context from '../../Context/DataContext';
 import styles from './Navbar.module.css';
+
 const Navbar = () => {
   const {setSearchQuery, refreshNavbar} = useContext(Context);
   const [search, setSearch] = useState('');
@@ -52,7 +53,7 @@ const clearSearch = () => {
 
         {/* Search Bar (Full width on mobile, max-width on desktop) */}
         <div className={`${isMenuOpen ? 'flex' : 'hidden'} ${styles.searchBarDiv}`}>
-          <div className={styles.seachBar}>
+          <div className={styles.searchBar}>
             <Search size={18} className='text-gray-400'/>
             <form onSubmit={handleSubmit} className='flex w-full'>
               <input 
@@ -64,7 +65,7 @@ const clearSearch = () => {
               />
               <button 
                 type="submit" 
-                className={styles.seachButton}
+                className={styles.searchButton}
               >
                 SEARCH
               </button>

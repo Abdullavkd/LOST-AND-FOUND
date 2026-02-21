@@ -1,27 +1,24 @@
-@import 'tailwindcss';
+/* Note: You can remove @import 'tailwindcss' if you are going 100% standard CSS */
 
 .mainDiv {
     background-color: white;
     position: sticky;
     top: 0;
     z-index: 50;
-    border-bottom: .1px solid black;
+    border-bottom: 1px solid black;
 }
-.innerDiv{
+
+.innerDiv {
     max-width: 87rem;
     margin: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    height: auto;
+    padding: 0.5rem 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 1rem;
 }
 
-.logoDiv{
+.logoDiv {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -29,31 +26,34 @@
     gap: 0.5rem;
 }
 
-.logo{
+.logo {
     font-weight: 900;
     font-size: 1.5rem;
 }
 
-.userSmScreen{
+.userSmScreen {
     display: flex;
     align-items: center;
     gap: 0.75rem;
 }
 
-.userIcon{
-    width: 1.5rem;
-    height: 1.5rem;
-    color: #4b5563;
-}
-
-.searchBarDiv{
+.searchBarDiv {
     align-items: center;
     flex-grow: 1;
     justify-content: center;
     width: 100%;
 }
 
-.searchBar{
+/* Logic for Toggle (Mobile) */
+.searchBarDiv.isHidden {
+    display: none;
+}
+
+.searchBarDiv.isOpen {
+    display: flex;
+}
+
+.searchBar {
     display: flex;
     align-items: center;
     width: 100%;
@@ -64,7 +64,7 @@
     background-color: #f9fafb;
 }
 
-.inputField{
+.inputField {
     outline: none;
     padding: 0.5rem;
     width: 100%;
@@ -72,85 +72,119 @@
     font-size: 0.875rem;
 }
 
-.searchButton{
+.searchButton {
     background-color: #ef4444;
     color: white;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
+    padding: 0.25rem 1rem;
     border-radius: 100px;
     font-size: 0.75rem;
     font-weight: 700;
     transition: background-color 0.2s ease-in-out;
+    border: none;
+    cursor: pointer;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
-.sideDiv{
-    background-color: #ef4444;
+.searchButton:hover {
+    background-color: #dc2626;
+}
+
+/* Desktop Actions (Replaces @apply hidden md:flex) */
+.desktopActionDiv {
+    display: none; /* Hidden on mobile */
+}
+
+.reportItem {
+    background-color: #ea580c; /* orange-600 */
+    border-radius: 9999px;
+    padding: 0.5rem 1.5rem;
     color: white;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
-    border-radius: 100px;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 700;
-    transition: background-color 0.2s ease-in-out;
-    display: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
 }
 
-.desktopActionDiv{
-    @apply hidden md:flex items-center justify-end gap-4 lg:gap-8
+.reportItem:hover {
+    background-color: #c2410c; /* orange-700 */
 }
 
-.reportItem{
-    @apply bg-orange-600 hover:bg-orange-700 rounded-full px-6 py-2 text-white text-sm font-bold transition-all whitespace-nowrap
+.user {
+    background-color: #f3f4f6; /* gray-100 */
+    border-radius: 9999px;
+    padding: 0.625rem;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.user{
-    @apply bg-gray-100 hover:bg-gray-200 rounded-full p-2.5 transition-colors
+.user:hover {
+    background-color: #e5e7eb; /* gray-200 */
 }
 
-.userIcon{
-    @apply text-gray-700
+.userIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #374151; /* gray-700 */
 }
 
-.mobileMenuDiv{
-    @apply md:hidden flex flex-col gap-3 pb-4
+/* Mobile Menu */
+.mobileMenuDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-bottom: 1rem;
 }
 
-.reportItemTwo{
-    @apply bg-orange-600 text-white text-center py-3 rounded-xl font-bold
+.reportItemTwo {
+    background-color: #ea580c;
+    color: white;
+    text-align: center;
+    padding: 0.75rem 0;
+    border-radius: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
 }
 
-
-
-
+/* --- Media Queries --- */
 
 @media (min-width: 768px) {
-    .innerDiv{
-        padding-top: 2.25rem;
-        padding-bottom: 2.25rem;
-        height: 20px;
+    .innerDiv {
+        padding: 1rem 0.75rem;
         flex-direction: row;
-        align-items: space-between;
-        padding-left: 0.75rem;
-        padding-right: 0.75rem;
-        width: 100%;
+        align-items: center; /* Fixed from space-between (not a valid align-items value) */
+        height: auto;
     }
 
-    .userSmScreen{
-        display: none;
+    .userSmScreen, .mobileMenuDiv {
+        display: none !important;
     }
 
-    .searchBarDiv{
-        display: flex !important;
+    .searchBarDiv {
+        display: flex !important; /* Forces visibility on desktop */
         max-width: 33.33%;
+    }
+
+    .desktopActionDiv {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .desktopActionDiv {
+        gap: 2rem;
     }
 }
 
 @media (min-width: 1280px) {
-  .searchBarDiv {
-    max-width: 36rem;
-  }
+    .searchBarDiv {
+        max-width: 36rem;
+    }
 }
