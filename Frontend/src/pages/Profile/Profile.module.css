@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+
+.parentDiv{
+    @apply flex flex-col gap-5
+}
+
+.topDiv{
+    @apply flex justify-between
+}
+
+.backButton{
+    @apply inline-block
+}
+
+.arrowLeft{
+    @apply bg-white rounded-full p-3 w-11 h-11 ml-3 mt-3
+}
+
+.topDivOne{
+    @apply mr-3 mt-3 flex gap-3
+}
+
+.allUsers{
+    @apply cursor-pointer bg-orange-600 text-white rounded-full px-5 py-2 text-sm sm:text-lg
+}
+
+.logout{
+    @apply cursor-pointer bg-orange-600 text-white rounded-full px-5 py-2 text-sm sm:text-lg
+}
+
+.userDetails{
+    @apply flex flex-col mb-15 mx-3
+}
+
+.profile{
+    @apply m-auto text-4xl md:text-5xl font-bold mb-5
+}
+
+.detailsDiv{
+    @apply grid gap-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4
+}
+
+.detailsTitle{
+    @apply pl-2
+}
+
+.detailsContent{
+    @apply border border-blue-300 text-gray-800 font-bold px-2 py-1 bg-gray-100
+}
+
+.postsDiv{
+    @apply flex
+}
+
+.postsTitle{
+    @apply text-4xl md:text-5xl font-bold m-auto mb-3
+}
+
+.allPosts{
+    @apply grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+}
