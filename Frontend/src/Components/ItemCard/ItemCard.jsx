@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { memo } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import api from '../../Services/api';
-import './itemCard.css';
+import styles from './ItemCard.module.css'
 
 const ItemCard = ({item, image, location, state, country, date, type, id, permission, isDeleted}) => {
     const [now] = useState(() => Date.now())
@@ -47,19 +47,19 @@ const ItemCard = ({item, image, location, state, country, date, type, id, permis
 
 
   return (
-      <div className={"item-card"} onClick={() => navigate(`/postdetails/${id}`)}>
-          {permission ? <div className='flex gap-3'><button onClick={deleteItem} className='bg-red-500 p-2 rounded-full absolute text-white left-4 top-4 opacity-65 cursor-pointer'><Trash2 className='w-5 h-5'/></button><Link onClick={(e) => e.stopPropagation()} to={`/editpost/${id}`} className='bg-gray-400 p-2 rounded-full absolute text-white left-14 top-4 opacity-65'><Pencil className='w-5 h-5'/></Link></div>  :<div></div> }
-        <div className={`inner-card ${type == "Lost" ? 'bg-red-600' : 'bg-green-600'}`}>{type}</div>
-        <div className='image'>
+      <div className={styles.itemCard} onClick={() => navigate(`/postdetails/${id}`)}>
+          {permission ? <div className={styles.permissionDiv}><button onClick={deleteItem} className={styles.deleteButton}><Trash2 className={styles.deleteIcon}/></button><Link onClick={(e) => e.stopPropagation()} to={`/editpost/${id}`} className={styles.editButton}><Pencil className={styles.editIcon}/></Link></div>  :<div></div> }
+        <div className={`${styles.innerCard} ${type == "Lost" ? 'bg-red-600' : 'bg-green-600'}`}>{type}</div>
+        <div className={styles.image}>
           <img src={`${image}`} alt="" className=''/>
         </div>
-        <div className='text-area'>
-          <p className='title'>{item}</p>
+        <div className={styles.textArea}>
+          <p className={styles.title}>{item}</p>
           <div>
               <p className='truncate'>{location}, {state}, {country}</p>
-              <div className='bottom'>
+              <div className={styles.bottom}>
                   <p>{timeAgo}</p>
-                  <Link to={`/postdetails/${id}`} className={`link-button ${type == "Lost" ? 'bg-red-600' : 'bg-green-600'}`}>View Details</Link>
+                  <Link to={`/postdetails/${id}`} className={`${styles.linkButton} ${type == "Lost" ? 'bg-red-600' : 'bg-green-600'}`}>View Details</Link>
               </div>
           </div>
         </div>

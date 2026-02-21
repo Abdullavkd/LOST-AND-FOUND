@@ -1,11 +1,13 @@
-.main-div {
+@import 'tailwindcss';
+
+.mainDiv {
     background-color: white;
     position: sticky;
     top: 0;
     z-index: 50;
     border-bottom: .1px solid black;
 }
-.inner-div{
+.innerDiv{
     max-width: 87rem;
     margin: auto;
     padding-left: 1rem;
@@ -19,7 +21,7 @@
     gap: 1rem;
 }
 
-.logo-div{
+.logoDiv{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -32,26 +34,26 @@
     font-size: 1.5rem;
 }
 
-.user-sm-screen{
+.userSmScreen{
     display: flex;
     align-items: center;
     gap: 0.75rem;
 }
 
-.user-icon{
+.userIcon{
     width: 1.5rem;
     height: 1.5rem;
     color: #4b5563;
 }
 
-.search-bar-div{
+.searchBarDiv{
     align-items: center;
     flex-grow: 1;
     justify-content: center;
     width: 100%;
 }
 
-.search-bar{
+.searchBar{
     display: flex;
     align-items: center;
     width: 100%;
@@ -62,7 +64,7 @@
     background-color: #f9fafb;
 }
 
-.input-field{
+.inputField{
     outline: none;
     padding: 0.5rem;
     width: 100%;
@@ -70,7 +72,7 @@
     font-size: 0.875rem;
 }
 
-.search-button{
+.searchButton{
     background-color: #ef4444;
     color: white;
     padding-left: 1rem;
@@ -83,7 +85,7 @@
     transition: background-color 0.2s ease-in-out;
 }
 
-.side-div{
+.sideDiv{
     background-color: #ef4444;
     color: white;
     padding-left: 1rem;
@@ -97,14 +99,36 @@
     display: none;
 }
 
+.desktopActionDiv{
+    @apply hidden md:flex items-center justify-end gap-4 lg:gap-8
+}
 
+.reportItem{
+    @apply bg-orange-600 hover:bg-orange-700 rounded-full px-6 py-2 text-white text-sm font-bold transition-all whitespace-nowrap
+}
+
+.user{
+    @apply bg-gray-100 hover:bg-gray-200 rounded-full p-2.5 transition-colors
+}
+
+.userIcon{
+    @apply text-gray-700
+}
+
+.mobileMenuDiv{
+    @apply md:hidden flex flex-col gap-3 pb-4
+}
+
+.reportItemTwo{
+    @apply bg-orange-600 text-white text-center py-3 rounded-xl font-bold
+}
 
 
 
 
 
 @media (min-width: 768px) {
-    .inner-div{
+    .innerDiv{
         padding-top: 2.25rem;
         padding-bottom: 2.25rem;
         height: 20px;
@@ -115,18 +139,18 @@
         width: 100%;
     }
 
-    .user-sm-screen{
+    .userSmScreen{
         display: none;
     }
 
-    .search-bar-div{
+    .searchBarDiv{
         display: flex !important;
         max-width: 33.33%;
     }
 }
 
 @media (min-width: 1280px) {
-  .search-bar-div {
+  .searchBarDiv {
     max-width: 36rem;
   }
 }

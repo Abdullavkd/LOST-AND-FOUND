@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 
-.item-card {
+.itemCard {
     border-radius: 1.5rem;
     padding: 0.75rem;
     background-color: white;
@@ -10,11 +10,11 @@
     transition: transform 0.1s ease-in-out;
 }
 
-.item-card:hover {
+.itemCard:hover {
     transform: scale(1.02);
 }
 
-.inner-card{
+.innerCard{
     position: absolute;
     top: 1.25rem;
     right: 1.25rem;
@@ -39,7 +39,7 @@
     height: 13rem;
 }
 
-.text-area{
+.textArea{
     margin-top: 0.75rem;
     width: 100%;
 }
@@ -56,7 +56,7 @@
     align-items: center;
 }
 
-.link-button{
+.linkButton{
     padding-left: 1.25rem;
     padding-right: 1.25rem;
     padding-top: 0.25rem;
@@ -65,4 +65,22 @@
     color: white;
 }
 
+.permissionDiv{
+    @apply flex gap-3
+}
 
+.deleteButton{
+    @apply bg-red-500 p-2 rounded-full absolute text-white left-4 top-4 opacity-65 cursor-pointer
+}
+
+.deleteIcon{
+    @apply w-5 h-5
+}
+
+.editButton{
+    @apply bg-gray-400 p-2 rounded-full absolute text-white left-14 top-4 opacity-65
+}
+
+.editIcon{
+    @apply w-5 h-5
+}
