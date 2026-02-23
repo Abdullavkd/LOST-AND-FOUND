@@ -1,49 +1,103 @@
-@import 'tailwindcss';
 
-.parentButton{
-    @apply hover:scale-102
+.parentButton {
+    transition: transform 0.1s ease-in-out;
 }
 
-.parentDiv{
-    @apply bg-white rounded-3xl flex flex-col items-center p-5
+.parentButton:hover {
+    transform: scale(1.02);
 }
 
-.deleteButton{
-    @apply absolute bg-white w-21 p-1 -left-5 hover:bg-gray-200 shadow cursor-pointer   
+.parentDiv {
+    background-color: #ffffff;
+    border-radius: 1.5rem; /* rounded-3xl */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.25rem; /* p-5 */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.you{
-    @apply size-5 font-bold
+.deleteButton {
+    position: absolute;
+    background-color: #ffffff;
+    width: 5.25rem; /* w-21 */
+    padding: 0.25rem; /* p-1 */
+    left: -1.25rem; /* -left-5 */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
 }
 
-.profileIcon{
-    @apply rounded-full h-27 w-27 mb-5 flex items-center justify-center text-4xl font-black 
+.deleteButton:hover {
+    background-color: #e5e7eb; /* gray-200 */
 }
 
-.name{
-    @apply text-blue-900 font-bold truncate text-center
+.you {
+    width: 1.25rem; /* size-5 */
+    height: 1.25rem;
+    font-weight: 700;
 }
 
-.email{
-    @apply text-sm truncate w-full text-center
+.profileIcon {
+    border-radius: 9999px;
+    height: 6.75rem; /* h-27 */
+    width: 6.75rem; /* w-27 */
+    margin-bottom: 1.25rem; /* mb-5 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 900; /* font-black */
 }
 
-.roleStatus{
-    @apply text-sm truncate text-center
+.name {
+    color: #1e3a8a; /* blue-900 */
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis; /* truncate */
+    white-space: nowrap;
+    text-align: center;
+    width: 100%;
 }
 
-.threeDont{
-    @apply size-5
+.email {
+    font-size: 0.875rem; /* text-sm */
+    overflow: hidden;
+    text-overflow: ellipsis; /* truncate */
+    white-space: nowrap;
+    width: 100%;
+    text-align: center;
+    color: #6b7280; /* gray-500 */
 }
 
-.threeDontDiv{
-    @apply cursor-pointer
+.roleStatus {
+    font-size: 0.875rem; /* text-sm */
+    overflow: hidden;
+    text-overflow: ellipsis; /* truncate */
+    white-space: nowrap;
+    text-align: center;
+    width: 100%;
 }
 
-.isOpenButton{
-    @apply flex justify-end w-full
+.threeDont {
+    width: 1.25rem; /* size-5 */
+    height: 1.25rem;
 }
 
-.isOpenDiv{
-    @apply relative
+.threeDontDiv {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.isOpenButton {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.isOpenDiv {
+    position: relative;
 }

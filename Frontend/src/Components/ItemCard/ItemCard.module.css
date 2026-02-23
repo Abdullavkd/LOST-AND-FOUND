@@ -1,6 +1,4 @@
-@import 'tailwindcss';
-
-
+/* Container for the card */
 .itemCard {
     border-radius: 1.5rem;
     padding: 0.75rem;
@@ -8,27 +6,28 @@
     position: relative;
     cursor: pointer;
     transition: transform 0.1s ease-in-out;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Optional: adds a soft shadow */
 }
 
 .itemCard:hover {
     transform: scale(1.02);
 }
 
-.innerCard{
+/* Badge (e.g., 'Available' or 'Urgent') */
+.innerCard {
     position: absolute;
     top: 1.25rem;
     right: 1.25rem;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
+    padding: 0.25rem 0.75rem;
     font-size: 0.875rem;
     color: white;
     border-radius: 0.375rem;
+    z-index: 10;
 }
 
-.image{
-    height: 15rem;
+/* Image Container */
+.image {
+    height: 13rem; /* Fixed: combined your two height definitions */
     border-radius: 1.5rem;
     width: 100%;
     overflow: hidden;
@@ -36,10 +35,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 13rem;
 }
 
-.textArea{
+.textArea {
     margin-top: 0.75rem;
     width: 100%;
 }
@@ -47,40 +45,77 @@
 .title {
     font-size: 1.5rem;
     font-weight: bold;
+    color: #1f2937; /* gray-800 */
 }
 
-.bottom{
+.bottom {
     display: flex;
     justify-content: space-between;
     width: 100%;
     align-items: center;
+    margin-top: 0.5rem;
 }
 
-.linkButton{
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
+.linkButton {
+    padding: 0.25rem 1.25rem;
     border-radius: 9999px;
     color: white;
+    text-decoration: none;
+    font-weight: 500;
 }
 
-.permissionDiv{
-    @apply flex gap-3
+/* Replaces @apply flex gap-3 */
+.permissionDiv {
+    display: flex;
+    gap: 0.75rem;
 }
 
-.deleteButton{
-    @apply bg-red-500 p-2 rounded-full absolute text-white left-4 top-4 opacity-65 cursor-pointer
+/* Replaces @apply bg-red-500 p-2 rounded-full absolute text-white left-4 top-4 opacity-65 cursor-pointer */
+.deleteButton {
+    background-color: #ef4444;
+    padding: 0.5rem;
+    border-radius: 9999px;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    color: white;
+    opacity: 0.65;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
 }
 
-.deleteIcon{
-    @apply w-5 h-5
+.deleteButton:hover {
+    opacity: 1;
 }
 
-.editButton{
-    @apply bg-gray-400 p-2 rounded-full absolute text-white left-14 top-4 opacity-65
+/* Replaces @apply w-5 h-5 */
+.deleteIcon, .editIcon {
+    width: 1.25rem;
+    height: 1.25rem;
 }
 
-.editIcon{
-    @apply w-5 h-5
+/* Replaces @apply bg-gray-400 p-2 rounded-full absolute text-white left-14 top-4 opacity-65 */
+.editButton {
+    background-color: #9ca3af;
+    padding: 0.5rem;
+    border-radius: 9999px;
+    position: absolute;
+    left: 3.5rem; /* Equivalent to left-14 (3.5rem = 56px) */
+    top: 1rem;
+    color: white;
+    opacity: 0.65;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+}
+
+.editButton:hover {
+    opacity: 1;
 }

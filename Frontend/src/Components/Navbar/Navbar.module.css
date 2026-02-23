@@ -1,16 +1,16 @@
-/* Note: You can remove @import 'tailwindcss' if you are going 100% standard CSS */
+/* Navbar.module.css */
 
 .mainDiv {
-    background-color: white;
+    background-color: #ffffff;
     position: sticky;
     top: 0;
     z-index: 50;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #000000;
 }
 
 .innerDiv {
     max-width: 87rem;
-    margin: auto;
+    margin: 0 auto;
     padding: 0.5rem 1rem;
     display: flex;
     flex-direction: column;
@@ -29,6 +29,8 @@
 .logo {
     font-weight: 900;
     font-size: 1.5rem;
+    color: #111827; /* Near black */
+    text-decoration: none;
 }
 
 .userSmScreen {
@@ -45,11 +47,11 @@
 }
 
 /* Logic for Toggle (Mobile) */
-.searchBarDiv.isHidden {
+.isHidden {
     display: none;
 }
 
-.searchBarDiv.isOpen {
+.isOpen {
     display: flex;
 }
 
@@ -66,6 +68,7 @@
 
 .inputField {
     outline: none;
+    border: none;
     padding: 0.5rem;
     width: 100%;
     background-color: transparent;
@@ -74,7 +77,7 @@
 
 .searchButton {
     background-color: #ef4444;
-    color: white;
+    color: #ffffff;
     padding: 0.25rem 1rem;
     border-radius: 100px;
     font-size: 0.75rem;
@@ -82,54 +85,56 @@
     transition: background-color 0.2s ease-in-out;
     border: none;
     cursor: pointer;
-    margin-top: 3px;
-    margin-bottom: 3px;
+    margin: 3px 0;
 }
 
 .searchButton:hover {
     background-color: #dc2626;
 }
 
-/* Desktop Actions (Replaces @apply hidden md:flex) */
+/* Desktop Actions Section */
 .desktopActionDiv {
-    display: none; /* Hidden on mobile */
+    display: none; /* Default hidden for mobile */
 }
 
 .reportItem {
-    background-color: #ea580c; /* orange-600 */
+    background-color: #ea580c;
     border-radius: 9999px;
     padding: 0.5rem 1.5rem;
-    color: white;
+    color: #ffffff;
     font-size: 0.875rem;
     font-weight: 700;
-    transition: all 0.2s;
+    transition: background-color 0.2s;
     white-space: nowrap;
     border: none;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .reportItem:hover {
-    background-color: #c2410c; /* orange-700 */
+    background-color: #c2410c;
 }
 
 .user {
-    background-color: #f3f4f6; /* gray-100 */
+    background-color: #f3f4f6;
     border-radius: 9999px;
     padding: 0.625rem;
     transition: background-color 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: none;
+    cursor: pointer;
 }
 
 .user:hover {
-    background-color: #e5e7eb; /* gray-200 */
+    background-color: #e5e7eb;
 }
 
 .userIcon {
     width: 1.5rem;
     height: 1.5rem;
-    color: #374151; /* gray-700 */
+    color: #374151;
 }
 
 /* Mobile Menu */
@@ -142,7 +147,7 @@
 
 .reportItemTwo {
     background-color: #ea580c;
-    color: white;
+    color: #ffffff;
     text-align: center;
     padding: 0.75rem 0;
     border-radius: 0.75rem;
@@ -150,22 +155,25 @@
     text-decoration: none;
 }
 
-/* --- Media Queries --- */
+/* --- Media Queries (The "md" logic) --- */
 
 @media (min-width: 768px) {
     .innerDiv {
         padding: 1rem 0.75rem;
         flex-direction: row;
-        align-items: center; /* Fixed from space-between (not a valid align-items value) */
+        align-items: center;
         height: auto;
     }
 
-    .userSmScreen, .mobileMenuDiv {
+    /* Hide mobile-only elements on desktop */
+    .userSmScreen, 
+    .mobileMenuDiv {
         display: none !important;
     }
 
+    /* Show search and desktop actions on tablet/PC */
     .searchBarDiv {
-        display: flex !important; /* Forces visibility on desktop */
+        display: flex !important; 
         max-width: 33.33%;
     }
 

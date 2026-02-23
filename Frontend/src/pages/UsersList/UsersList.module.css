@@ -1,17 +1,51 @@
-@import 'tailwindcss';
-
-.parentDiv{
-    @apply mt-11 px-3
+.parentDiv {
+    margin-top: 2.75rem; /* mt-11 */
+    padding-left: 0.75rem; /* px-3 */
+    padding-right: 0.75rem;
 }
 
-.titleDiv{
-    @apply flex justify-center mb-5
+.titleDiv {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.25rem; /* mb-5 */
 }
 
-.title{
-    @apply text-4xl md:text-5xl font-bold
+.title {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700;
 }
 
-.allUsers{
-    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3
+.allUsers {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* grid-cols-2 */
+    gap: 0.75rem; /* gap-3 */
+}
+
+/* Responsive Media Queries */
+
+@media (min-width: 640px) {
+    .allUsers {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 3rem; /* text-5xl */
+    }
+    .allUsers {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .allUsers {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1280px) {
+    .allUsers {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
 }

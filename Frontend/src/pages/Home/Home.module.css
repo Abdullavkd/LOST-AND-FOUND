@@ -1,5 +1,22 @@
-@import 'tailwindcss';
+.parentDiv {
+    display: grid;
+    gap: 0.75rem;
+}
 
-.parentDiv{
-    @apply grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+@media (min-width: 640px) {
+    .parentDiv {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .parentDiv {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .parentDiv {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
 }

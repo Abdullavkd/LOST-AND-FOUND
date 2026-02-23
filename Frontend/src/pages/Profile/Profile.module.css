@@ -1,61 +1,123 @@
-@import 'tailwindcss';
-
-.parentDiv{
-    @apply flex flex-col gap-5
+.parentDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
 }
 
-.topDiv{
-    @apply flex justify-between
+.topDiv {
+    display: flex;
+    justify-content: space-between;
 }
 
-.backButton{
-    @apply inline-block
+.backButton {
+    display: inline-block;
 }
 
-.arrowLeft{
-    @apply bg-white rounded-full p-3 w-11 h-11 ml-3 mt-3
+.arrowLeft {
+    background-color: #ffffff;
+    border-radius: 9999px;
+    padding: 0.75rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-left: 0.75rem;
+    margin-top: 0.75rem;
+    border: none;
+    cursor: pointer;
 }
 
-.topDivOne{
-    @apply mr-3 mt-3 flex gap-3
+.topDivOne {
+    margin-right: 0.75rem;
+    margin-top: 0.75rem;
+    display: flex;
+    gap: 0.75rem;
 }
 
-.allUsers{
-    @apply cursor-pointer bg-orange-600 text-white rounded-full px-5 py-2 text-sm sm:text-lg
+.allUsers, .logout {
+    cursor: pointer;
+    background-color: #ea580c;
+    color: #ffffff;
+    border-radius: 9999px;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    border: none;
+    transition: background-color 0.2s;
 }
 
-.logout{
-    @apply cursor-pointer bg-orange-600 text-white rounded-full px-5 py-2 text-sm sm:text-lg
+.allUsers:hover, .logout:hover {
+    background-color: #c2410c;
 }
 
-.userDetails{
-    @apply flex flex-col mb-15 mx-3
+.userDetails {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3.75rem;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
 }
 
-.profile{
-    @apply m-auto text-4xl md:text-5xl font-bold mb-5
+.profile {
+    margin: 0 auto 1.25rem auto;
+    font-size: 2.25rem;
+    font-weight: 700;
 }
 
-.detailsDiv{
-    @apply grid gap-5 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4
+.detailsDiv {
+    display: grid;
+    gap: 1.25rem;
 }
 
-.detailsTitle{
-    @apply pl-2
+.detailsTitle {
+    padding-left: 0.5rem;
+    font-size: 0.9rem;
+    color: #4b5563;
 }
 
-.detailsContent{
-    @apply border border-blue-300 text-gray-800 font-bold px-2 py-1 bg-gray-100
+.detailsContent {
+    border: 1px solid #93c5fd;
+    color: #1f2937;
+    font-weight: 700;
+    padding: 0.25rem 0.5rem;
+    background-color: #f3f4f6;
+    border-radius: 4px;
 }
 
-.postsDiv{
-    @apply flex
+.postsDiv {
+    display: flex;
 }
 
-.postsTitle{
-    @apply text-4xl md:text-5xl font-bold m-auto mb-3
+.postsTitle {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin: 0 auto 0.75rem auto;
 }
 
-.allPosts{
-    @apply grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+.allPosts {
+    display: grid;
+    gap: 0.75rem;
+}
+
+/* Media Queries for Grid and Typography */
+
+@media (min-width: 640px) {
+    .allUsers, .logout {
+        font-size: 1.125rem;
+    }
+    .detailsDiv, .allPosts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 768px) {
+    .profile, .postsTitle {
+        font-size: 3rem;
+    }
+    .allPosts {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .detailsDiv, .allPosts {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
 }

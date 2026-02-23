@@ -1,42 +1,96 @@
-@import 'tailwindcss';
-
-.parentDiv{
-    @apply min-h-screen bg-white
+.parentDiv {
+    min-height: 100vh;
+    background-color: #ffffff;
 }
 
-.backButton{
-    @apply inline-block
+.backButton {
+    display: inline-block;
 }
 
-.arrowLeft{
-    @apply bg-gray-200 rounded-full p-3 w-11 h-11 ml-3 mt-3
+.arrowLeft {
+    background-color: #e5e7eb;
+    border-radius: 9999px;
+    padding: 0.75rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-left: 0.75rem;
+    margin-top: 0.75rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.registerDiv{
-    @apply flex justify-center items-center h-full w-full mt-21
+.registerDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 5.25rem;
 }
 
-.registerDivInner{
-    @apply bg-gray-200 w-90 md:w-101 mx-3 p-7 rounded-3xl flex flex-col items-center gap-7
+.registerDivInner {
+    background-color: #e5e7eb;
+    width: 22.5rem;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    padding: 1.75rem;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
 }
 
-.registerTitle{
-    @apply text-4xl font-black
+.registerTitle {
+    font-size: 2.25rem;
+    font-weight: 900;
 }
 
-.form{
-    @apply flex flex-col gap-5 w-full
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
 }
 
-.input{
-    @apply w-full bg-white py-3 px-5 rounded-full text-xl outline-none
+.input {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 0.75rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 1.25rem;
+    outline: none;
+    border: 1px solid transparent;
+    box-sizing: border-box;
 }
 
-.submit{
-    @apply bg-blue-800 text-white py-3 rounded-full text-2xl font-bold outline-none
+.submit {
+    background-color: #1e40af;
+    color: #ffffff;
+    padding: 0.75rem 0;
+    border-radius: 9999px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
-.subTitle{
-    @apply text-blue-800
+.submit:hover {
+    background-color: #1e3a8a;
 }
 
+.subTitle {
+    color: #1e40af;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .registerDivInner {
+        width: 25.25rem;
+    }
+}
